@@ -18,12 +18,6 @@ Route::get('/', function () {
 });
 
 
-
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -39,10 +33,10 @@ Route::prefix('shop')->group(function () {
  * admin routes
  */
 Route::prefix("admin")->group(function (){
+    Route::get('/dashboard',[App\Http\Controllers\Admin\IndexController::class,'index'])->name('admin.dashboard');
     Route::get('/login', [App\Http\Controllers\Admin\LoginController::class,'showLoginForm'])->name('admin.login');
     Route::post('/login', [App\Http\Controllers\Admin\LoginController::class,'login'])->name('admin.login.submit');
     Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class,'logout'])->name('admin.logout');
 
-    Route::view('index','admin/index')->name('admin.dashboard');
 
 });
