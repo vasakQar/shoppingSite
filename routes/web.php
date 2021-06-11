@@ -37,6 +37,6 @@ Route::prefix("admin")->group(function (){
     Route::get('/login', [App\Http\Controllers\Admin\LoginController::class,'showLoginForm'])->name('admin.login');
     Route::post('/login', [App\Http\Controllers\Admin\LoginController::class,'login'])->name('admin.login.submit');
     Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class,'logout'])->name('admin.logout');
-
+    Route::get('/user/list', [\App\Http\Controllers\Admin\IndexController::class, 'showUserList'])->name('admin.user.list');
 
 });
