@@ -29,6 +29,7 @@ Route::prefix('shop')->group(function () {
     Route::get('wishlist', [ShopController::class, 'showWishlist'])->name('products.wishlist');
     Route::get('quick_view', [ShopController::class, 'quickView'])->name('quick.view');
 });
+
 /**
  * admin routes
  */
