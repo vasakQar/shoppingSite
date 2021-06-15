@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -68,6 +69,11 @@ class IndexController extends Controller
         return back()->with('success', 'Category has been deleted successfully!');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * update Category
+     */
     public function updateCategory(Request $request)
     {
         $id = $request->id;
@@ -80,4 +86,24 @@ class IndexController extends Controller
         return back()->with('success', 'Category has been updated successfully!');
     }
 
+    public function showProducts()
+    {
+//        dd(4545564546666);
+        return view('admin/products_list');
+    }
+
+    public function createNewProduct()
+    {
+        return view('admin/create_new_product');
+    }
+    public function createProduct(Request $request)
+    {
+        dd("create products");
+    }
+
+    public function showUserList()
+    {
+        $users = User::all();
+        return view('admin/user_list',compact('users'));
+    }
 }

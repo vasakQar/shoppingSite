@@ -31,7 +31,7 @@
                 </ul>
             </li>
             <li>
-                <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                <a href="{{ route('admin.user.list') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users_List</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info float-right">NEW</span></a>
@@ -98,7 +98,7 @@
                 <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Products__</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="ecommerce_products_grid.html">Products grid</a></li>
-{{--                    <li><a href="{{route('show-product')}}">Products list</a></li>--}}
+                    <li><a href="{{route('show.products')}}">Products_list</a></li>
                     <li><a href="">Product edit</a></li>
                     <li><a href="ecommerce_product_detail.html">Product detail</a></li>
                     <li><a href="ecommerce-cart.html">Cart</a></li>
