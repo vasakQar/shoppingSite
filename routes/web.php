@@ -37,6 +37,8 @@ Route::prefix("admin")->group(function (){
     Route::get('/login', [App\Http\Controllers\Admin\LoginController::class,'showLoginForm'])->name('admin.login');
     Route::post('/login', [App\Http\Controllers\Admin\LoginController::class,'login'])->name('admin.login.submit');
     Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class,'logout'])->name('admin.logout');
-
-
+    Route::get('/categories', [App\Http\Controllers\Admin\IndexController::class, 'showCategoreies'])->name('show.categories');
+    Route::post('/create_category',[App\Http\Controllers\Admin\IndexController::class,'createCategory'])->name('create.category');
+    Route::get('/delet_category/{id}', [App\Http\Controllers\Admin\IndexController::class, 'deleteCategory'])->name('delete.category');
+    Route::post('/update_category/{id}', [App\Http\Controllers\Admin\IndexController::class, 'updateCategory'])->name('update.category');
 });

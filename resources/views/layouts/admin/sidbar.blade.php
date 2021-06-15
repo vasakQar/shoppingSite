@@ -23,7 +23,7 @@
             <li class="active">
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Categories</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-{{--                    <li class="active"><a href="{{route('show-categories')}}">Categories_list</a></li>--}}
+                    <li class="active"><a href="{{ route('show.categories') }}">Categories_list</a></li>
                     <li><a href="">Category v.2</a></li>
                     <li><a href="">Category v.3</a></li>
                     <li><a href="">Category v.4</a></li>
