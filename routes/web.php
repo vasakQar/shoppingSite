@@ -41,4 +41,7 @@ Route::prefix("admin")->group(function (){
     Route::post('/create_category',[App\Http\Controllers\Admin\IndexController::class,'createCategory'])->name('create.category');
     Route::get('/delet_category/{id}', [App\Http\Controllers\Admin\IndexController::class, 'deleteCategory'])->name('delete.category');
     Route::post('/update_category/{id}', [App\Http\Controllers\Admin\IndexController::class, 'updateCategory'])->name('update.category');
+    Route::get('/products', [App\Http\Controllers\Admin\IndexController::class, 'showProducts'])->name('show.products');
+    Route::get('/create_new_product', [App\Http\Controllers\Admin\IndexController::class,'createNewProduct'])->name('create.new.product');
+    Route::post('/create_product',[App\Http\Controllers\Admin\IndexController::class,'createProduct'])->name('create.product');
 });

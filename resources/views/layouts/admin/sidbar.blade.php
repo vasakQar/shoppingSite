@@ -98,7 +98,7 @@
                 <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Products__</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="ecommerce_products_grid.html">Products grid</a></li>
-{{--                    <li><a href="{{route('show-product')}}">Products list</a></li>--}}
+                    <li><a href="{{route('show.products')}}">Products_list</a></li>
                     <li><a href="">Product edit</a></li>
                     <li><a href="ecommerce_product_detail.html">Product detail</a></li>
                     <li><a href="ecommerce-cart.html">Cart</a></li>
