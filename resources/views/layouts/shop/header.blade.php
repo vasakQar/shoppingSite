@@ -31,7 +31,7 @@
                         <div class="links">
                             <div class="myaccount"><a title="My Account" href="login.html"><span class="hidden-xs">My Account</span></a> </div>
                             <div class="check"><a title="Checkout" href="checkout.html"><span class="hidden-xs">Checkout</span></a> </div>
-                            <div class="check"><a title="Checkout" href="{{ route('products.wishlist') }}"><span class="hidden-xs">Wishlist</span></a> </div>
+                            <div class="check"><a title="Checkout" href="{{ route('products.wish.list') }}"><span class="hidden-xs">Wishlist</span></a> </div>
                         <!-- Header Company -->
                             <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> Company <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -192,7 +192,7 @@
                                                         <li> <a href="product_detail.html"> <span>Product Detail</span> </a> </li>
                                                         <li> <a href="shopping-cart"> <span>Shopping Cart</span> </a> </li>
                                                         <li><a href="checkout.html"><span>Checkout</span></a> </li>
-                                                        <li> <a href="{{ route('products.wishlist') }}"> <span>Wishlist</span> </a> </li>
+                                                        <li> <a href="{{ route('products.wish.list') }}"> <span>Wishlist</span> </a> </li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-sm-6 has-sep">

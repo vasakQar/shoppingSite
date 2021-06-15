@@ -110,9 +110,13 @@
 
 
             <li>
-                <a href="{{route('admin.logout')}}">
+                <a href="{{route('admin.logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
             <li>
                 <a class="right-sidebar-toggle">
