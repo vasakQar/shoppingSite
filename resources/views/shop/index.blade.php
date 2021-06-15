@@ -180,7 +180,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
 {{--                                                                   --}}
                                                                 </ul>
                                                             </div>
@@ -219,7 +219,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
 {{--                                                                   --}}
                                                                 </ul>
                                                             </div>
@@ -258,7 +258,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
 {{--                                                                   --}}
                                                                 </ul>
                                                             </div>
@@ -298,7 +298,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
 {{--                                                                   --}}
                                                                 </ul>
                                                             </div>
@@ -346,7 +346,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -384,7 +384,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -422,7 +422,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -467,7 +467,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -505,7 +505,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -543,7 +543,7 @@
                                                             <div class="box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -604,7 +604,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -641,7 +641,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -679,7 +679,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -718,7 +718,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -755,7 +755,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -792,7 +792,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -829,7 +829,7 @@
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                        <li><a class="link-wishlist" href="{{ route('products.wishlist') }}"></a> </li>
+                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>

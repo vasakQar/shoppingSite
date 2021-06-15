@@ -24,7 +24,7 @@ class IndexController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      * show categories
      */
-    public function showCategoreies()
+    public function showCategories()
     {
         $categories = Category::paginate(4);
         return view('admin/categories_list', compact('categories'));

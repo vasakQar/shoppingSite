@@ -11,8 +11,8 @@
                     <th scope="col">Name_En</th>
                     <th scope="col">Name_Ru</th>
                     <th scope="col">Name_Am</th>
-                    <th scope="col">Delete</th>
                     <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 @if(Session::has('success'))
@@ -23,7 +23,8 @@
                 @foreach($categories as $category)
                     <tr>
                         <th scope="row">{{$category->id}}</th>
-                        <form method="POST" action="/admin/update_category/{{$category->id}}">
+                        <form method="post" action="/admin/update_category/{{$category->id}}">
+                            @method('PATCH')
                             @csrf
                             <td>
                                 <input type="text" name="name_am" value="{{$category->name_am}}">
@@ -34,13 +35,20 @@
                             <td>
                                 <input type="text" name="name_en" value="{{$category->name_en}}">
                             </td>
-                            <td>
-                                <button type="button" class="btn btn-danger"><a href="/admin/delet_category/{{$category->id}}">x</a></button>
-                            </td>
+
                             <td>
                                 <button type="submit" class="btn btn-info">Update</button>
                             </td>
                         </form>
+                            <td>
+                                <form action="{{ route('delete.category',['id' => $category->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">
+                                        X
+                                    </button>
+                                </form>
+                            </td>
                     </tr>
                 @endforeach
                 </tbody>

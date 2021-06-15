@@ -38,7 +38,7 @@ class ShopController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      * show user wishlist
      */
-    public function showWishlist()
+    public function showWishList()
     {
         return view('shop/wishlist');
     }
