@@ -18,31 +18,24 @@ Route::get('/', function () {
 });
 
 
-
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('shop')->group(function () {
+Route::prefix('/shop')->group(function () {
     Route::get('/index', [ShopController::class, 'index'])->name('shop.index');
-    Route::get('/product-detail', [ShopController::class, 'showProductDetail'])->name('shop.product.detail');
-    Route::get('/shopping-cart', [ShopController::class, 'showShoppingCart'])->name('shop.shopping.cart');
-    Route::get('wishlist', [ShopController::class, 'showWishlist'])->name('products.wishlist');
-    Route::get('quick_view', [ShopController::class, 'quickView'])->name('quick.view');
+    Route::get('/product_detail', [ShopController::class, 'showProductDetail'])->name('shop.product.detail');
+    Route::get('/shopping_cart', [ShopController::class, 'showShoppingCart'])->name('shop.shopping.cart');
+    Route::get('/wish_list', [ShopController::class, 'showWishlist'])->name('products.wishlist');
+    Route::get('/quick_view', [ShopController::class, 'quickView'])->name('quick.view');
 });
 /**
  * admin routes
  */
 Route::prefix("admin")->group(function (){
+    Route::get('/dashboard',[App\Http\Controllers\Admin\IndexController::class,'index'])->name('admin.dashboard');
     Route::get('/login', [App\Http\Controllers\Admin\LoginController::class,'showLoginForm'])->name('admin.login');
     Route::post('/login', [App\Http\Controllers\Admin\LoginController::class,'login'])->name('admin.login.submit');
     Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class,'logout'])->name('admin.logout');
-
-    Route::view('index','admin/index')->name('admin.dashboard');
-
+    Route::get('/user_list', [App\Http\Controllers\Admin\IndexController::class, 'showUserList'])->name('admin.user.list');
 });
