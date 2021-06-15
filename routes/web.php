@@ -22,13 +22,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('shop')->group(function () {
+Route::prefix('/shop')->group(function () {
     Route::get('/index', [ShopController::class, 'index'])->name('shop.index');
-    Route::get('/product-detail', [ShopController::class, 'showProductDetail'])->name('shop.product.detail');
-    Route::get('/shopping-cart', [ShopController::class, 'showShoppingCart'])->name('shop.shopping.cart');
-    Route::get('wishlist', [ShopController::class, 'showWishlist'])->name('products.wishlist');
-    Route::get('quick_view', [ShopController::class, 'quickView'])->name('quick.view');
+    Route::get('/product_detail', [ShopController::class, 'showProductDetail'])->name('shop.product.detail');
+    Route::get('/shopping_cart', [ShopController::class, 'showShoppingCart'])->name('shop.shopping.cart');
+    Route::get('/wish_list', [ShopController::class, 'showWishlist'])->name('products.wishlist');
+    Route::get('/quick_view', [ShopController::class, 'quickView'])->name('quick.view');
 });
+
 /**
  * admin routes
  */
@@ -44,4 +45,5 @@ Route::prefix("admin")->group(function (){
     Route::get('/products', [App\Http\Controllers\Admin\IndexController::class, 'showProducts'])->name('show.products');
     Route::get('/create_new_product', [App\Http\Controllers\Admin\IndexController::class,'createNewProduct'])->name('create.new.product');
     Route::post('/create_product',[App\Http\Controllers\Admin\IndexController::class,'createProduct'])->name('create.product');
+    Route::get('/user_list', [App\Http\Controllers\Admin\IndexController::class, 'showUserList'])->name('admin.user.list');
 });

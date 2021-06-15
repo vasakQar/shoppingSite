@@ -31,7 +31,7 @@
                 </ul>
             </li>
             <li>
-                <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                <a href="{{ route('admin.user.list') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users_List</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info float-right">NEW</span></a>

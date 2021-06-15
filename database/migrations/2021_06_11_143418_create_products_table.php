@@ -19,14 +19,13 @@ class CreateProductsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('name', 255)->nullable();
-            $table->string('description_en', 500)->nullable();
-            $table->string('description_am', 500)->nullable();
-            $table->string('description_ru', 500)->nullable();
-            $table->decimal('price', 22)->nullable()->default(0.00);
-            $table->decimal('old_price', 22)->nullable()->default(0.00);
+            $table->text('description_en')->nullable();
+            $table->text('description_am')->nullable();
+            $table->text('description_ru')->nullable();
+            $table->float('price')->default(0);
+            $table->float('old_price')->nullable()->default(0);
             $table->json('images')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

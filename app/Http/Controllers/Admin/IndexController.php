@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -100,4 +101,9 @@ class IndexController extends Controller
         dd("create products");
     }
 
+    public function showUserList()
+    {
+        $users = User::all();
+        return view('admin/user_list',compact('users'));
+    }
 }
