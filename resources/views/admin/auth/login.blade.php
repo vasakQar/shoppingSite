@@ -22,7 +22,7 @@
     <div>
         <div>
 
-            <h1 class="logo-name">CamLike</h1>
+            <h1 class="logo-name">Qualis</h1>
 
         </div>
         <h3>Welcome to Admin page</h3>

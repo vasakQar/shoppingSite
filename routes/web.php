@@ -42,7 +42,7 @@ Route::prefix("admin")->group(function (){
     Route::get('/login', [LoginController::class,'showLoginForm'])->name('admin.login');
     Route::post('/login', [LoginController::class,'login'])->name('admin.login.submit');
     Route::post('/logout', [LoginController::class,'logout'])->name('admin.logout');
-    Route::get('/categories', [App\Http\Controllers\Admin\IndexController::class, 'showCategoreies'])->name('show.categories');
+    Route::get('/categories', [App\Http\Controllers\Admin\IndexController::class, 'showCategories'])->name('show.categories');
     Route::post('/create_category',[App\Http\Controllers\Admin\IndexController::class,'createCategory'])->name('create.category');
     Route::delete('/delete_category/{id}', [App\Http\Controllers\Admin\IndexController::class, 'deleteCategory'])->name('delete.category');
     Route::patch('/update_category/{id}', [App\Http\Controllers\Admin\IndexController::class, 'updateCategory'])->name('update.category');
@@ -50,4 +50,11 @@ Route::prefix("admin")->group(function (){
     Route::get('/create_new_product', [App\Http\Controllers\Admin\IndexController::class,'createNewProduct'])->name('create.new.product');
     Route::post('/create_product',[App\Http\Controllers\Admin\IndexController::class,'createProduct'])->name('create.product');
     Route::get('/user_list', [App\Http\Controllers\Admin\IndexController::class, 'showUserList'])->name('admin.user.list');
+    Route::delete('/delete_product/{id}', [App\Http\Controllers\Admin\IndexController::class, 'deleteProduct'])->name('admin.delete.product');
+    Route::get('/edit_product/{id}', [App\Http\Controllers\Admin\IndexController::class, 'editProduct'])->name('admin.edit.product');
+    Route::patch('/update_product/{id}', [App\Http\Controllers\Admin\IndexController::class, 'updateProduct'])->name('update.product');
+    Route::get('show_product_images/{id}', [App\Http\Controllers\Admin\IndexController::class, 'showProductImages'])->name('show.product.images');
+    Route::delete('/delete_product_image/{imgName}/{id}', [App\Http\Controllers\Admin\IndexController::class, 'deleteProductImage'])->name('delete.product.image');
+
+
 });

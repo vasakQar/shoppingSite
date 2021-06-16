@@ -1,43 +1,78 @@
 @extends('layouts.admin.main')
 
 @section('content')
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description_En</th>
-            <th scope="col">Description_Ru</th>
-            <th scope="col">Description_Am</th>
-            <th scope="col">Price</th>
-            <th scope="col">old_Price</th>
-            <th scope="col">images</th>
-            <th scope="col">category_name</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        @if(Session::has('success'))
-            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
-        @endif
-        <tbody>
-{{--        @foreach($products as $product)--}}
-{{--            <tr>--}}
-{{--                <th scope="row">{{$product->id}}</th>--}}
-{{--                <td>{{$product->name}}</td>--}}
-{{--                <td><textarea style="width: 100%;">{{$product->description}}</textarea></td>--}}
-{{--                <td>{{$product->price}}</td>--}}
-{{--                <td><a href="show-images/{{$product->id}}">show images</a></td>--}}
-{{--                <td>{{$product->category->name}}</td>--}}
-{{--                <td>--}}
-{{--                    <button type="button" class="btn btn-danger"><a href="/delet-prod/{{$product->id}}">x</a></button>--}}
-{{--                    <button type="button" class="btn btn-info"><a href="/edit-product/{{$product->id}}">edit</a></button>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--        @endforeach--}}
-        </tbody>
-    </table>
-{{--    <div style="">--}}
-{{--        {{ $products->links() }}--}}
-{{--    </div>--}}
-{{--    <button type="button" class="btn btn-outline-primary" style="float: right;"><a href="{{route('add-new-product')}}">Add New</a></button>--}}
+    @if(Session::has('success'))
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
+    @endif
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Border Table </h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description En</th>
+                        <th scope="col">Description Ru</th>
+                        <th scope="col">Description Am</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">old_Price</th>
+                        <th scope="col">images</th>
+                        <th scope="col">category name</th>
+                        <th scope="col">Action1</th>
+                        <th scope="col">Action2</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($products as $product)
+                        <tr>
+                            <td>{{$product->id}}</td>
+                            <td>{{$product->name}}</td>
+                            <td><textarea style="width: 100%">{{$product->description_en}}</textarea></td>
+                            <td><textarea style="width: 100%">{{$product->description_ru}}</textarea></td>
+                            <td><textarea style="width: 100%">{{$product->description_am}}</textarea></td>
+                            <td>{{$product->price}}</td>
+                            <td>{{$product->old_price}}</td>
+                            <td><a href="{{ route('show.product.images', $product->id) }}">show images</a></td>
+                            <td>{{$product->category->name_en}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info"><a href="{{ route('admin.edit.product', $product->id) }}">edit</a></button>
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.delete.product',['id' => $product->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">
+                                        X
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection

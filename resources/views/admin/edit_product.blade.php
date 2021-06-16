@@ -5,17 +5,19 @@
         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
     @endif
     <div class="" style="text-align: center">
-        <h1 style="color: #23C6C8;">Create Product</h1>
+        <h1 style="color: #23C6C8;">Update Product</h1>
     </div>
     <div class="row" style="">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <form action="{{route('create.product')}}" method="POST" enctype="multipart/form-data" class="row">
+            <form  action="{{route('update.product', $product->id)}}" method="POST" enctype="multipart/form-data" class="row">
+                @method('PATCH')
                 @csrf
+                <input type="hidden" name="id" value="{{$product->id}}">
                 <div class="col-sm-6 form-group">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="name">
+                        <input type="text" name="name" class="form-control" placeholder="name" value="{{ $product->name }}">
                         <p class="text-danger">{{ $errors->first('name') }}</p>
                     </div>
                     <div class="form-group">
@@ -45,12 +47,12 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" placeholder="price" name="price">
+                        <input type="text" class="form-control" placeholder="price" name="price" value="{{ $product->price }}">
                         <p class="text-danger">{{ $errors->first('price') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="old price">Old Price</label>
-                        <input type="text" class="form-control" placeholder="old price" name="old_price">
+                        <input type="text" class="form-control" placeholder="old price" name="old_price" value="{{ $product->old_price }}">
                         <p class="text-danger">{{ $errors->first('old_price') }}</p>
                     </div>
                     <div class="form-group">
@@ -59,7 +61,7 @@
                         <p class="text-danger">{{ $errors->first('images') }}</p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-rounded btn-block">Add New Product</button>
+                <button type="submit" class="btn btn-primary btn-rounded btn-block">Update Product</button>
             </form>
         </div>
         <div class="col-sm-2"></div>

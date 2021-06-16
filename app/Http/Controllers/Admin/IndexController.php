@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -86,21 +88,188 @@ class IndexController extends Controller
         return back()->with('success', 'Category has been updated successfully!');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * 'admin'   show product list
+     */
     public function showProducts()
     {
-//        dd(4545564546666);
-        return view('admin/products_list');
+        $products = Product::with('category')->get();
+        return view('admin/products_list', compact('products'));
     }
 
+    public function showProductImages($id)
+    {
+        $product = Product::where('id',$id)->first();
+        $productImages = json_decode($product->images);
+
+        return view('admin/show_product_images', compact('productImages','product'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * form for creating new product
+     */
     public function createNewProduct()
     {
-        return view('admin/create_new_product');
-    }
-    public function createProduct(Request $request)
-    {
-        dd("create products");
+        $categories = Category::all();
+        return view('admin/create_new_product', compact('categories'));
     }
 
+    /**
+     * @param Request $request
+     * create new product
+     */
+    public function createProduct(Request $request)
+    {
+        /**
+         * validate
+         */
+        $request->validate([
+            'name'           => 'required',
+            'description_en' => 'required',
+            'description_ru' => 'required',
+            'description_am' => 'required',
+            'price'          => 'required',
+            'price'          => 'required',
+            'old_price'      => 'required',
+            'images'         => 'required',
+        ]);
+
+
+        if ($request->hasFile('images'))
+        {
+            foreach ($request->file('images') as $image)
+            {
+                $name = $image->getClientOriginalName();
+                $image->storeAs('images', $name, 'public');
+                $data[] = $name;
+            }
+        }
+
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description_en = $request->description_en;
+        $product->description_ru = $request->description_ru;
+        $product->description_am = $request->description_am;
+        $product->price = $request->price;
+        $product->old_price = $request->old_price;
+        $product->images = json_encode($data);
+        $product->category_id = $request->category_id;
+        $product->save();
+
+        return back()->with('message', 'Product has been created successfully!');
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * 'admin'  delete product
+     */
+    public function deleteProduct($id)
+    {
+        $product = Product::where('id',$id)->first();
+        $productImages = json_decode( $product->images );
+        foreach ($productImages as $productImage)
+        {
+            Storage::delete('/public/images/'.$productImage);
+        }
+
+        $product->delete();
+        return redirect()->route('show.products')->with('success','Product deleted successfully');
+
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * edit product
+     */
+    public function editProduct($id)
+    {
+        $categories = Category::all();
+        $product = Product::where('id',$id)->first();
+        return view('admin/edit_product', compact('product','categories'));
+    }
+
+    public function updateProduct(Request $request)
+    {
+        $request->validate([
+            'name'           => 'required',
+            'description_en' => 'required',
+            'description_ru' => 'required',
+            'description_am' => 'required',
+            'price'          => 'required',
+            'price'          => 'required',
+            'old_price'      => 'required',
+            'images'         => 'required',
+        ]);
+
+        /**
+         * find prod by id
+         */
+        $product = Product::where('id', $request->id)->first();
+        /**
+         * delete images path
+         */
+        $productImages = json_decode( $product->images );
+        foreach ($productImages as $productImage)
+        {
+            Storage::delete('/public/images/'.$productImage);
+        }
+        /**
+         * move images in images folder
+         */
+        if ($request->hasFile('images'))
+        {
+            foreach ($request->file('images') as $image)
+            {
+                $name = time().$image->getClientOriginalName();
+                $image->storeAs('images', $name, 'public');
+                $data[] = $name;
+            }
+        }
+
+
+        $product->name = $request->name;
+        $product->description_en = $request->description_en;
+        $product->description_ru = $request->description_ru;
+        $product->description_am = $request->description_am;
+        $product->price = $request->price;
+        $product->old_price = $request->old_price;
+        $product->images = json_encode($data);
+        $product->category_id = $request->category_id;
+        $product->save();
+
+        return redirect()->route('show.products')->with('message', 'Product has been updated successfully!');
+    }
+
+    /**
+     * @param $imgName
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteProductImage($imgName,$id)
+    {
+        $product  = Product::where('id',$id)->first();
+        $images = json_decode($product->images);
+        foreach ($images as $image){
+            if ( $image == $imgName ){
+                Storage::delete('/public/images/'.$imgName);
+            }else{
+                $data[] = $image;
+            }
+        }
+        $product->images = json_encode($data);
+        $product->save();
+        return redirect()->back()->with('massege','image deleted successfully!');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * 'admin'  show user list
+     */
     public function showUserList()
     {
         $users = User::all();
