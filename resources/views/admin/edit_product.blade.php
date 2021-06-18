@@ -10,7 +10,7 @@
     <div class="row" style="">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <form  action="{{route('update.product', $product->id)}}" method="POST" enctype="multipart/form-data" class="row">
+            <form  action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data" class="row">
                 @method('PATCH')
                 @csrf
                 <input type="hidden" name="id" value="{{$product->id}}">

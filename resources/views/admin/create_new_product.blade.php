@@ -10,7 +10,7 @@
     <div class="row" style="">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <form action="{{route('create.product')}}" method="POST" enctype="multipart/form-data" class="row">
+            <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" class="row">
                 @csrf
                 <div class="col-sm-6 form-group">
                     <div class="form-group">

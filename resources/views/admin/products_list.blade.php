@@ -54,18 +54,23 @@
                             <td><textarea style="width: 100%">{{$product->description_am}}</textarea></td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->old_price}}</td>
-                            <td><a href="{{ route('show.product.images', $product->id) }}">show images</a></td>
+                            <td><a href="{{ route('products.show', $product->id) }}">show images</a></td>
                             <td>{{$product->category->name_en}}</td>
                             <td>
-                                <button type="button" class="btn btn-info"><a href="{{ route('admin.edit.product', $product->id) }}">edit</a></button>
+                                <button type="button" class="btn btn-info"><a href="{{ route('products.edit', $product->id) }}">edit</a></button>
                             </td>
                             <td>
-                                <form action="{{ route('admin.delete.product',['id' => $product->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">
-                                        X
-                                    </button>
+{{--                                <form action="{{ route('products.destroy',['id' => $product->id]) }}" method="POST">--}}
+{{--                                    @csrf--}}
+{{--                                    @method('DELETE')--}}
+{{--                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">--}}
+{{--                                        X--}}
+{{--                                    </button>--}}
+{{--                                </form>--}}
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to unenroll?');" style="display: inline-block;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" class="btn btn-danger" value="X">
                                 </form>
                             </td>
                         </tr>

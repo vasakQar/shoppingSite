@@ -23,7 +23,7 @@
                 @foreach($categories as $category)
                     <tr>
                         <th scope="row">{{$category->id}}</th>
-                        <form method="post" action="/admin/update_category/{{$category->id}}">
+                        <form method="post" action="{{route('categories.update',$category->id)}}">
                             @method('PATCH')
                             @csrf
                             <td>
@@ -41,12 +41,10 @@
                             </td>
                         </form>
                             <td>
-                                <form action="{{ route('delete.category',['id' => $category->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">
-                                        X
-                                    </button>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to unenroll?');" style="display: inline-block;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" class="btn btn-danger" value="X">
                                 </form>
                             </td>
                     </tr>
@@ -63,7 +61,7 @@
             @if(Session::has('message'))
                 <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
-            <form method="POST" action="{{route('create.category')}}">
+            <form method="POST" action="{{route('categories.store')}}">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name_En</label>
