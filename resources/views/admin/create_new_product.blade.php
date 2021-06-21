@@ -1,8 +1,9 @@
 @extends('layouts.admin.main')
 
 @section('content')
-    @if(Session::has('message'))
-        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+
+    @if(session('message'))
+        <p class="alert alert-info">{{ session('message') }}</p>
     @endif
     <div class="" style="text-align: center">
         <h1 style="color: #23C6C8;">Create Product</h1>

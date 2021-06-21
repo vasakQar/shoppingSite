@@ -28,9 +28,8 @@ class ProductCreateRequest extends FormRequest
             'description_en' => 'required',
             'description_ru' => 'required',
             'description_am' => 'required',
-            'price'          => 'required',
-            'price'          => 'required',
-            'old_price'      => 'required',
+            'price'          => 'regex:/^(\d+(,\d{1,2})?)?$/',
+            'old_price'      => 'nullable|regex:/^(\d+(,\d{1,2})?)?$/',
             'images'         => 'required',
         ];
     }

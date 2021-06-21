@@ -15,8 +15,8 @@
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
-                @if(Session::has('success'))
-                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
+                @if(session('success'))
+                    <p class="alert alert-info">{{ session('success') }}</p>
                 @endif
                 <tbody>
                 <h1>Categories List</h1>
@@ -42,8 +42,8 @@
                         </form>
                             <td>
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to unenroll?');" style="display: inline-block;">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    @method('DELETE')
                                     <input type="submit" class="btn btn-danger" value="X">
                                 </form>
                             </td>
@@ -58,8 +58,8 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
             <h1>Add New Category</h1>
-            @if(Session::has('message'))
-                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @if(session('message'))
+                <p class="alert alert-info">{{ session('message') }}</p>
             @endif
             <form method="POST" action="{{route('categories.store')}}">
                 @csrf

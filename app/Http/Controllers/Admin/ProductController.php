@@ -57,17 +57,16 @@ class ProductController extends Controller
             }
         }
 
-
-        $product = new Product();
-        $product->name = $request->name;
-        $product->description_en = $request->description_en;
-        $product->description_ru = $request->description_ru;
-        $product->description_am = $request->description_am;
-        $product->price = $request->price;
-        $product->old_price = $request->old_price;
-        $product->images = $data;
-        $product->category_id = $request->category_id;
-        $product->save();
+        Product::create([
+            'name'           => $request->name,
+            'description_en' => $request->description_en,
+            'description_ru' => $request->description_ru,
+            'description_am' => $request->description_am,
+            'price'          => $request->price,
+            'old_price'      => $request->old_price,
+            'images'         => $data,
+            'category_id'    => $request->category_id,
+        ]);
 
         return back()->with('message', 'Product has been created successfully!');
     }
@@ -78,9 +77,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = Product::where('id',$id)->first();
         $productImages = $product->images;
         return view('admin/show_product_images', compact('productImages','product'));
     }
@@ -91,10 +89,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         $categories = Category::all();
-        $product = Product::where('id',$id)->first();
         return view('admin/edit_product', compact('product','categories'));
     }
 
@@ -110,7 +107,7 @@ class ProductController extends Controller
         /**
          * find prod by id
          */
-        $product = Product::where('id', $request->id)->first();
+        $product = Product::find($request->id);
         /**
          * delete images path
          */
@@ -134,16 +131,16 @@ class ProductController extends Controller
                 $data[] = $name;
             }
         }
-
-        $product->name = $request->name;
-        $product->description_en = $request->description_en;
-        $product->description_ru = $request->description_ru;
-        $product->description_am = $request->description_am;
-        $product->price = $request->price;
-        $product->old_price = $request->old_price;
-        $product->images = $data;
-        $product->category_id = $request->category_id;
-        $product->save();
+        $product->update([
+            'name'           => $request->name,
+            'description_en' => $request->description_en,
+            'description_ru' => $request->description_ru,
+            'description_am' => $request->description_am,
+            'price'          => $request->price,
+            'old_price'      => $request->old_price,
+            'images'         => $data,
+            'category_id'    => $request->category_id,
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Product has been updated successfully!');
     }
@@ -156,7 +153,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::where('id',$id)->first();
+        $product = Product::find($id);
         $productImages = $product->images;
         foreach ($productImages as $productImage)
         {
@@ -173,7 +170,7 @@ class ProductController extends Controller
      */
     public function deleteProductImage($imgName,$id)
     {
-        $product  = Product::where('id',$id)->first();
+        $product  = Product::find($id);
         $images = $product->images;
         foreach ($images as $image){
             if ( $image == $imgName ){

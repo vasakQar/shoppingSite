@@ -1,8 +1,8 @@
 @extends('layouts.admin.main')
 
 @section('content')
-    @if(Session::has('success'))
-        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
+    @if(session('success'))
+        <p class="alert alert-info">{{ session('success') }}</p>
     @endif
     <div class="col-lg-12">
         <div class="ibox ">
@@ -60,16 +60,9 @@
                                 <button type="button" class="btn btn-info"><a href="{{ route('products.edit', $product->id) }}">edit</a></button>
                             </td>
                             <td>
-{{--                                <form action="{{ route('products.destroy',['id' => $product->id]) }}" method="POST">--}}
-{{--                                    @csrf--}}
-{{--                                    @method('DELETE')--}}
-{{--                                    <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">--}}
-{{--                                        X--}}
-{{--                                    </button>--}}
-{{--                                </form>--}}
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to unenroll?');" style="display: inline-block;">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    @method('DELETE')
                                     <input type="submit" class="btn btn-danger" value="X">
                                 </form>
                             </td>

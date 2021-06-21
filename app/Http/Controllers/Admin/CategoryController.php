@@ -31,19 +31,16 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CategoryCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryCreateRequest $request)
     {
-
-        $category = new Category();
-        $category->name_en = $request->name_en;
-        $category->name_ru = $request->name_ru;
-        $category->name_am = $request->name_am;
-        $category->save();
+        Category::create([
+            'name_en' => $request['name_en'],
+            'name_ru' => $request['name_ru'],
+            'name_am' => $request['name_am'],
+        ]);
 
         return back()->with('message', 'Category has been created successfully!');
     }
@@ -71,34 +68,28 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(CategoryCreateRequest $request, $id)
     {
-        $category = Category::where('id',$id)->first();
-        $category->name_en = $request->name_en;
-        $category->name_ru = $request->name_ru;
-        $category->name_am = $request->name_am;
-        $category->save();
+        Category::findOrFail($id)
+            ->update(['name_en' => $request['name_en'],
+                      'name_ru' => $request['name_ru'],
+                      'name_am' => $request['name_am'],
+            ]);
 
         return back()->with('success', 'Category has been updated successfully!');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::where('id',$id)->first();
         $category->delete();
-
         return back()->with('success', 'Category has been deleted successfully!');
     }
 }
