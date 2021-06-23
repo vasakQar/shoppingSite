@@ -2,8 +2,11 @@
 
 @section('content')
     <h1>Product Images</h1>
+    @if(session('massege'))
+        <p class="alert alert-info">{{ session('massege') }}</p>
+    @endif
     <div class="row">
-        @foreach($productImages as $productImage)
+        @foreach($product->images as $productImage)
             <div class="col-sm-3">
                 <form action="{{ route('delete.product.image',['imgName' => $productImage, 'id' => $product->id,]) }}" method="POST">
                     @csrf

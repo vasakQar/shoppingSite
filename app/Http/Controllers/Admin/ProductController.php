@@ -66,8 +66,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $productImages = $product->images;
-        return view('admin/show_product_images', compact('productImages','product'));
+        return view('admin/show_product_images', compact('product'));
     }
 
     /**
@@ -102,7 +101,7 @@ class ProductController extends Controller
         if (is_array($productImages )){
             foreach ($productImages as $productImage)
             {
-                if (isset($productImage)){
+                if (is_file(storage_path('app/public/images/'.$productImage))){
                     Storage::delete('/public/images/'.$productImage);
                 }
             }
@@ -136,7 +135,7 @@ class ProductController extends Controller
         $productImages = $product->images;
         foreach ($productImages as $productImage)
         {
-            if (isset($productImages)){
+            if (is_file(storage_path('app/public/images/'.$productImage))){
                 Storage::delete('/public/images/'.$productImage);
             }
         }
@@ -153,15 +152,22 @@ class ProductController extends Controller
     {
         $product  = Product::findOrFail($id);
         $images = $product->images;
-        foreach ($images as $image){
-            if ( $image == $imgName ){
-                Storage::delete('/public/images/'.$imgName);
-            }else{
-                $data[] = $image;
+        if (count($images) > 1){
+            foreach ($images as $image){
+                if ( $image == $imgName ){
+                    if (is_file(storage_path('app/public/images/'.$imgName))) {
+                        Storage::delete('/public/images/' . $imgName);
+                    }
+                }else{
+                    $data[] = $image;
+                }
             }
+            $product->images = $data;
+            $product->save();
+            return redirect()->back()->with('massege','image deleted successfully!');
+        }else{
+            return redirect()->back()->with('massege','You can not delete the last image, you  should delete product !');
         }
-        $product->images = $data;
-        $product->save();
-        return redirect()->back()->with('massege','image deleted successfully!');
     }
+
 }
