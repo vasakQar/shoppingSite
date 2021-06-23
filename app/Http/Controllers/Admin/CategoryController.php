@@ -36,11 +36,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryCreateRequest $request)
     {
-        Category::create([
-            'name_en' => $request['name_en'],
-            'name_ru' => $request['name_ru'],
-            'name_am' => $request['name_am'],
-        ]);
+        Category::create($request->validated());
 
         return back()->with('message', 'Category has been created successfully!');
     }
@@ -75,10 +71,7 @@ class CategoryController extends Controller
     public function update(CategoryCreateRequest $request, $id)
     {
         Category::findOrFail($id)
-            ->update(['name_en' => $request['name_en'],
-                      'name_ru' => $request['name_ru'],
-                      'name_am' => $request['name_am'],
-            ]);
+            ->update($request->validated());
 
         return back()->with('success', 'Category has been updated successfully!');
     }

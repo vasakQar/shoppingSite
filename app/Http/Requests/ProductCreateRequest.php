@@ -25,12 +25,13 @@ class ProductCreateRequest extends FormRequest
     {
         return [
             'name'           => 'required',
+            'category_id'    => 'required',
             'description_en' => 'required',
             'description_ru' => 'required',
             'description_am' => 'required',
             'price'          => 'regex:/^(\d+(,\d{1,2})?)?$/',
             'old_price'      => 'nullable|regex:/^(\d+(,\d{1,2})?)?$/',
-            'images'         => 'required',
+            'images'         => 'required|array|max:5',
         ];
     }
 }

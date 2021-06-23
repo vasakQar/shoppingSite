@@ -6,7 +6,7 @@
         <p class="alert alert-info">{{ session('message') }}</p>
     @endif
     <div class="" style="text-align: center">
-        <h1 style="color: #23C6C8;">Create Product</h1>
+        <h1 style="color: #23C6C8;">Create Product</h1><hr>
     </div>
     <div class="row" style="">
         <div class="col-sm-2"></div>
@@ -16,7 +16,7 @@
                 <div class="col-sm-6 form-group">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="name">
+                        <input type="text" name="name" class="form-control" placeholder="name" value="{{ old('name') }}">
                         <p class="text-danger">{{ $errors->first('name') }}</p>
                     </div>
                     <div class="form-group">
@@ -46,17 +46,17 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" placeholder="price" name="price">
+                        <input type="text" class="form-control" placeholder="price" name="price" value="{{ old('price') }}">
                         <p class="text-danger">{{ $errors->first('price') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="old price">Old Price</label>
-                        <input type="text" class="form-control" placeholder="old price" name="old_price">
+                        <input type="text" class="form-control" placeholder="old price" name="old_price" value="{{ old('old_price') }}">
                         <p class="text-danger">{{ $errors->first('old_price') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="image">Images</label>
-                        <input type="file" class="form-control" placeholder="add_prod_images" name="images[]" multiple/>
+                        <input type="file" class="form-control" placeholder="add_prod_images" name="images[]"  multiple/>
                         <p class="text-danger">{{ $errors->first('images') }}</p>
                     </div>
                 </div>

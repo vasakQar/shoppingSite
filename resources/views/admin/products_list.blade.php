@@ -70,6 +70,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div style="float: right;">
+                    {{ $products->links() }}
+                </div>
             </div>
         </div>
     </div>

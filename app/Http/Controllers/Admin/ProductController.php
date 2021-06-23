@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {
@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(10);
         return view('admin/products_list', compact('products'));
     }
 
@@ -39,14 +39,11 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ProductCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ProductCreateRequest $request)
     {
-
         if ($request->hasFile('images'))
         {
             foreach ($request->file('images') as $image)
@@ -56,17 +53,7 @@ class ProductController extends Controller
                 $data[] = $name;
             }
         }
-
-        Product::create([
-            'name'           => $request->name,
-            'description_en' => $request->description_en,
-            'description_ru' => $request->description_ru,
-            'description_am' => $request->description_am,
-            'price'          => $request->price,
-            'old_price'      => $request->old_price,
-            'images'         => $data,
-            'category_id'    => $request->category_id,
-        ]);
+        Product::create(array_merge($request->except(['images','_token']),['images' => $data]));
 
         return back()->with('message', 'Product has been created successfully!');
     }
@@ -107,7 +94,7 @@ class ProductController extends Controller
         /**
          * find prod by id
          */
-        $product = Product::find($request->id);
+        $product = Product::findOrFail($request->id);
         /**
          * delete images path
          */
@@ -115,7 +102,9 @@ class ProductController extends Controller
         if (is_array($productImages )){
             foreach ($productImages as $productImage)
             {
-                Storage::delete('/public/images/'.$productImage);
+                if (isset($productImage)){
+                    Storage::delete('/public/images/'.$productImage);
+                }
             }
         }
 
@@ -131,16 +120,7 @@ class ProductController extends Controller
                 $data[] = $name;
             }
         }
-        $product->update([
-            'name'           => $request->name,
-            'description_en' => $request->description_en,
-            'description_ru' => $request->description_ru,
-            'description_am' => $request->description_am,
-            'price'          => $request->price,
-            'old_price'      => $request->old_price,
-            'images'         => $data,
-            'category_id'    => $request->category_id,
-        ]);
+        $product->update(array_merge($request->except(['images','_token']),['images' => $data]));
 
         return redirect()->route('products.index')->with('success', 'Product has been updated successfully!');
     }
@@ -151,13 +131,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $product = Product::find($id);
         $productImages = $product->images;
         foreach ($productImages as $productImage)
         {
-            Storage::delete('/public/images/'.$productImage);
+            if (isset($productImages)){
+                Storage::delete('/public/images/'.$productImage);
+            }
         }
         $product->delete();
         return redirect()->back()->with('success','Product deleted successfully');
@@ -170,7 +151,7 @@ class ProductController extends Controller
      */
     public function deleteProductImage($imgName,$id)
     {
-        $product  = Product::find($id);
+        $product  = Product::findOrFail($id);
         $images = $product->images;
         foreach ($images as $image){
             if ( $image == $imgName ){
