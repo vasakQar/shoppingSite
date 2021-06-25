@@ -32,7 +32,7 @@ class ProductCreateRequest extends FormRequest
             'price'          => 'regex:/^(\d+(,\d{1,2})?)?$/',
             'old_price'      => 'nullable|regex:/^(\d+(,\d{1,2})?)?$/',
             'images'         => 'required',
-            'images.*'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*'       => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

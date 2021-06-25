@@ -30,19 +30,19 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description En</label>
-                        <textarea class="form-control"  type="text" name="description_en" placeholder="description en"></textarea>
+                        <textarea class="form-control"  type="text" name="description_en" placeholder="description en">{{ $product->description_en }}</textarea>
                         <p class="text-danger">{{ $errors->first('description_en') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="description">Description Ru</label>
-                        <textarea class="form-control"  type="text" name="description_ru" placeholder="description ru"></textarea>
+                        <textarea class="form-control"  type="text" name="description_ru" placeholder="description ru">{{ $product->description_ru }}</textarea>
                         <p class="text-danger">{{ $errors->first('description_ru') }}</p>
                     </div>
                 </div>
                 <div class="col-sm-6 form-group"  >
                     <div class="form-group">
                         <label for="description">Description Am</label>
-                        <textarea class="form-control"  type="text" name="description_am" placeholder="description am"></textarea>
+                        <textarea class="form-control"  type="text" name="description_am" placeholder="description am">{{ $product->description_am }}</textarea>
                         <p class="text-danger">{{ $errors->first('description_am') }}</p>
                     </div>
                     <div class="form-group">

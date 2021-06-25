@@ -1,5 +1,6 @@
 @extends('layouts.admin.main')
 
+
 @section('content')
     @if(session('success'))
         <p class="alert alert-info">{{ session('success') }}</p>
@@ -49,9 +50,9 @@
                         <tr>
                             <td>{{$product->id}}</td>
                             <td>{{$product->name}}</td>
-                            <td><textarea style="width: 100%">{{$product->description_en}}</textarea></td>
-                            <td><textarea style="width: 100%">{{$product->description_ru}}</textarea></td>
-                            <td><textarea style="width: 100%">{{$product->description_am}}</textarea></td>
+                            <td class="td_desc">{{$product->description_en}}</td>
+                            <td class="td_desc">{{$product->description_ru}}</td>
+                            <td class="td_desc">{{$product->description_am}}</td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->old_price}}</td>
                             <td><a href="{{ route('products.show', $product->id) }}">show images</a></td>
