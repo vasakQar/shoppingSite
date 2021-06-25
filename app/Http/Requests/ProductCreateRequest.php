@@ -31,7 +31,8 @@ class ProductCreateRequest extends FormRequest
             'description_am' => 'required',
             'price'          => 'regex:/^(\d+(,\d{1,2})?)?$/',
             'old_price'      => 'nullable|regex:/^(\d+(,\d{1,2})?)?$/',
-            'images'         => 'required|array|max:5',
+            'images'         => 'required',
+            'images.*'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }
