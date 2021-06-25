@@ -15,15 +15,15 @@
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
-                @if(Session::has('success'))
-                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
+                @if(session('success'))
+                    <p class="alert alert-info">{{ session('success') }}</p>
                 @endif
                 <tbody>
                 <h1>Categories List</h1>
                 @foreach($categories as $category)
                     <tr>
                         <th scope="row">{{$category->id}}</th>
-                        <form method="post" action="/admin/update_category/{{$category->id}}">
+                        <form method="post" action="{{route('categories.update',$category->id)}}">
                             @method('PATCH')
                             @csrf
                             <td>
@@ -41,12 +41,10 @@
                             </td>
                         </form>
                             <td>
-                                <form action="{{ route('delete.category',['id' => $category->id]) }}" method="POST">
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to unenroll?');" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger">
-                                        X
-                                    </button>
+                                    <input type="submit" class="btn btn-danger" value="X">
                                 </form>
                             </td>
                     </tr>
@@ -60,10 +58,10 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
             <h1>Add New Category</h1>
-            @if(Session::has('message'))
-                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @if(session('message'))
+                <p class="alert alert-info">{{ session('message') }}</p>
             @endif
-            <form method="POST" action="{{route('create.category')}}">
+            <form method="POST" action="{{route('categories.store')}}">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name_En</label>

@@ -40,8 +40,10 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $this->validate($request,[
-            'email' => 'required|email',
-            'password' => 'required|min:6'
+            'email' => 'required|email|exists:admins,email',
+            'password' => 'required|min:6|max:30'
+        ],[
+            'email.exists' => 'This email is not exists in admins table'
         ]);
 
 

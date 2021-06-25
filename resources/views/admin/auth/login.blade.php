@@ -16,13 +16,13 @@
 
 </head>
 
-<body class="gray-bg">
+<body class="gray-bg" style="background-color: #95959c">
 
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
         <div>
 
-            <h1 class="logo-name">CamLike</h1>
+            <h1 class="logo-name">Qualis</h1>
 
         </div>
         <h3>Welcome to Admin page</h3>
@@ -31,21 +31,13 @@
         <form class="m-t" method="POST" action="{{ route('admin.login.submit') }}">
             @csrf
             <div class="form-group">
-                <input type="email" class="form-control  @error('email') is-invalid @enderror" placeholder="{{ __('E-Mail Address') }}"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input type="email" class="form-control" placeholder="{{ __('E-Mail Address') }}"  name="email" value="{{ old('email') }}" autofocus>
+                <span class="text-danger">@error('email')<strong>{{ $message }}</strong>@enderror</span>
             </div>
-            @error('email')
-            <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
             <div class="form-group">
-                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Password') }}"  name="password" required autocomplete="current-password">
+                <input type="password" class="form-control" placeholder="{{ __('Password') }}"  name="password">
+                <span class="text-danger">@error('email')<strong>{{ $message }}</strong>@enderror</span>
             </div>
-            @error('password')
-            <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
             <button type="submit" class="btn btn-primary block full-width m-b">{{ __('Login') }}</button>
         </form>
     </div>

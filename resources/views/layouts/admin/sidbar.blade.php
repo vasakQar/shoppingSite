@@ -23,7 +23,7 @@
             <li class="active">
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Categories</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="active"><a href="{{ route('show.categories') }}">Categories_list</a></li>
+                    <li class="active"><a href="{{ route('categories.index') }}">Categories_list</a></li>
                     <li><a href="">Category v.2</a></li>
                     <li><a href="">Category v.3</a></li>
                     <li><a href="">Category v.4</a></li>
@@ -97,8 +97,8 @@
             <li>
                 <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Products__</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="ecommerce_products_grid.html">Products grid</a></li>
-                    <li><a href="{{route('show.products')}}">Products_list</a></li>
+                    <li><a href="{{ route('products.create') }}">Create Product</a></li>
+                    <li><a href="{{ route('products.index') }}">Products_list</a></li>
                     <li><a href="">Product edit</a></li>
                     <li><a href="ecommerce_product_detail.html">Product detail</a></li>
                     <li><a href="ecommerce-cart.html">Cart</a></li>

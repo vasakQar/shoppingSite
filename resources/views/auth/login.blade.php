@@ -48,21 +48,13 @@
                                         <ul class="form-list">
                                             <li>
                                                 <label for="email">{{ __('E-Mail Address') }}<span class="required">*</span></label>
-                                                <input id="email" type="email" class="input-text required-entry @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                                @error('email')--}}
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                <input id="email" type="email" class="input-text"  name="email" value="{{ old('email') }}" autofocus><br>
+                                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
                                             </li>
                                             <li>
                                                 <label for="password">{{ __('Password') }} <span class="required">*</span></label>
-                                                <input type="password" title="Password" id="password" class="input-text required-entry validate-password @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                <input type="password" title="Password" id="password" class="input-text required-entry validate-password @error('password') is-invalid @enderror" name="password" autocomplete="current-password"><br>
+                                                <span class="text-danger">@error('password'){{ $message }}@enderror</span>
                                             </li>
                                         </ul>
                                             <div class="form-check">

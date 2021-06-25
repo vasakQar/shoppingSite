@@ -49,34 +49,34 @@
                                             <ul class="form-list">
                                                 <li>
                                                     <label for="name">{{ __('Name') }}</label>
-                                                    <input id="name" type="text" class="input-text required-entry @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                    <input id="name" type="text" class="input-text" name="name" value="{{ old('name') }}" autofocus><br>
                                                     @error('name')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
+                                                        <span class="text-danger" role="alert">
+                                                            {{ $message }}
                                                         </span>
                                                     @enderror
                                                 </li>
                                                 <li>
                                                     <label for="email">{{ __('E-Mail Address') }}</label>
-                                                    <input id="email" type="email" class="input-text required-entry @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                                    @error('email')--}}
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
+                                                    <input id="email" type="email" class="input-text" name="email" value="{{ old('email') }}" autofocus><br>
+                                                    @error('email')
+                                                        <span class="text-danger" role="alert">
+                                                            {{ $message }}
                                                         </span>
                                                     @enderror
                                                 </li>
                                                 <li>
                                                     <label for="password">{{ __('Password') }}</label>
-                                                    <input type="password" title="Password" id="password" class="input-text required-entry validate-password @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                                    <input type="password" title="Password" id="password" class="input-text" name="password" autocomplete="new-password"><br>
                                                     @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
+                                                        <span class="text-danger" role="alert">
+                                                            {{ $message }}
                                                         </span>
                                                     @enderror
                                                 </li>
                                                 <li>
                                                     <label for="password-confirm" class="input-text required-entry">{{ __('Confirm Password') }}</label>
-                                                    <input id="password-confirm" type="password" class="input-text required-entry" name="password_confirmation" required autocomplete="new-password">
+                                                    <input id="password-confirm" type="password" class="input-text" name="password_confirmation">
                                                 </li>
                                             </ul>
                                             <button type="submit" class="button fa-registered">
@@ -132,7 +132,7 @@
 
 {{--                                @error('name')--}}
 {{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                        {{ $message }}--}}
 {{--                                    </span>--}}
 {{--                                @enderror--}}
 {{--                            </div>--}}
@@ -146,7 +146,7 @@
 
 {{--                                @error('email')--}}
 {{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                        {{ $message }}--}}
 {{--                                    </span>--}}
 {{--                                @enderror--}}
 {{--                            </div>--}}
@@ -160,7 +160,7 @@
 
 {{--                                @error('password')--}}
 {{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                        {{ $message }}--}}
 {{--                                    </span>--}}
 {{--                                @enderror--}}
 {{--                            </div>--}}
