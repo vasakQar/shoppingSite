@@ -33,7 +33,26 @@ class IndexController extends Controller
      */
     public function showUserList()
     {
-        $users = User::all();
+        $users = User::paginate(8);
         return view('admin/user_list',compact('users'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteUser($id)
+    {
+        $user  = User::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->with('massage','user has been deleted successfully!');
+    }
+
+    public function blockUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'block';
+        $user->save();
+        return redirect()->back()->with('massage','user has been blocked successfully!');
     }
 }
