@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
@@ -23,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->paginate(10);
+        $products = Product::with('category')->paginate(6);
         return view('admin/products_list', compact('products'));
     }
 
@@ -88,27 +89,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductCreateRequest $request)
+    public function update(ProductUpdateRequest $request)
     {
         /**
          * find prod by id
          */
         $product = Product::findOrFail($request->id);
         /**
-         * delete images path
-         */
-        $productImages = $product->images ;
-        if (is_array($productImages )){
-            foreach ($productImages as $productImage)
-            {
-                if (is_file(storage_path('app/public/images/'.$productImage))){
-                    Storage::delete('/public/images/'.$productImage);
-                }
-            }
-        }
-
-        /**
-         * move images in images folder
+         * move new images in images folder
          */
         if ($request->hasFile('images'))
         {
@@ -119,6 +107,17 @@ class ProductController extends Controller
                 $data[] = $name;
             }
         }
+        /**
+         * adding old images in data
+         */
+        $productImages = $product->images ;
+        if (is_array($productImages)){
+            foreach ($productImages as $productImage)
+            {
+                $data[] = $productImage;
+            }
+        }
+
         $product->update(array_merge($request->except(['images','_token']),['images' => $data]));
 
         return redirect()->route('products.index')->with('success', 'Product has been updated successfully!');
