@@ -38,17 +38,17 @@ class IndexController extends Controller
     }
 
     /**
-     * @param $id
+     * @param User $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deleteUser($id)
+    public function deleteUser(User $id)
     {
         $user  = User::findOrFail($id);
         $user->delete();
         return redirect()->back()->with('massage','user has been deleted successfully!');
     }
 
-    public function blockUser($id)
+    public function blockUser(User $id)
     {
         $user = User::findOrFail($id);
         $user->status = 'block';
