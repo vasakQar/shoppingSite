@@ -11,19 +11,20 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $casts = [
-        'images' => 'array'
-    ];
+//    protected $casts = [
+//        'images' => 'array'
+//    ];
 
     public function setImagesAttribute($value)
     {
-        $this->attributes['images'] = json_encode( $value );
+//        dd($value);
+        $this->attributes['images'] = json_encode($value);
     }
 
 
     public function getImagesAttribute($value)
     {
-       return $this->attributes['images'] = json_decode( $value );
+       return $this->attributes['images'] = json_decode($value);
     }
 
     public function category()

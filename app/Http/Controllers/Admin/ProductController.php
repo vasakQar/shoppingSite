@@ -18,9 +18,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,9 +27,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -60,10 +56,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Product $product)
     {
@@ -83,11 +77,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ProductUpdateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ProductUpdateRequest $request)
     {
@@ -98,23 +89,15 @@ class ProductController extends Controller
         /**
          * move new images in images folder
          */
-        if ($request->hasFile('images'))
+        $oldImages = $product->images;
+        $data = $oldImages ? $oldImages : [];
+
+        if ($request->file('images'))
         {
             foreach ($request->file('images') as $image)
             {
-                $name = time().$image->getClientOriginalName();
-                $image->storeAs('images', $name, 'public');
-                $data[] = $name;
-            }
-        }
-        /**
-         * adding old images in data
-         */
-        $productImages = $product->images ;
-        if (is_array($productImages)){
-            foreach ($productImages as $productImage)
-            {
-                $data[] = $productImage;
+                $image->store('public/images');
+                $data[] = $image->hashName();
             }
         }
 
