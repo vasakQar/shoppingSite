@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Images</label>
-                        <input type="file" class="form-control" placeholder="add_prod_images" name="images[]" multiple/>
+                        <input type="file" id="images" class="form-control @error('images') is-invalid @enderror" placeholder="add_prod_images" name="images[]" multiple/>
                         <p class="text-danger">{{ $errors->first('images') }}</p>
                     </div>
                 </div>
