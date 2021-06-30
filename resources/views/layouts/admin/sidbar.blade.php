@@ -33,58 +33,58 @@
             <li>
                 <a href="{{ route('admin.user.list') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Users_List</span></a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info float-right">NEW</span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="toastr_notifications.html">Notification</a></li>
-                    <li><a href="nestable_list.html">Nestable list</a></li>
-                    <li><a href="agile_board.html">Agile board</a></li>
-                    <li><a href="timeline_2.html">Timeline v.2</a></li>
-                    <li><a href="diff.html">Diff</a></li>
-                    <li><a href="pdf_viewer.html">PDF viewer</a></li>
-                    <li><a href="i18support.html">i18 support</a></li>
-                    <li><a href="sweetalert.html">Sweet alert</a></li>
-                    <li><a href="idle_timer.html">Idle timer</a></li>
-                    <li><a href="truncate.html">Truncate</a></li>
-                    <li><a href="password_meter.html">Password meter</a></li>
-                    <li><a href="spinners.html">Spinners</a></li>
-                    <li><a href="spinners_usage.html">Spinners usage</a></li>
-                    <li><a href="tinycon.html">Live favicon</a></li>
-                    <li><a href="google_maps.html">Google maps</a></li>
-                    <li><a href="datamaps.html">Datamaps</a></li>
-                    <li><a href="social_buttons.html">Social buttons</a></li>
-                    <li><a href="code_editor.html">Code editor</a></li>
-                    <li><a href="modal_window.html">Modal window</a></li>
-                    <li><a href="clipboard.html">Clipboard</a></li>
-                    <li><a href="text_spinners.html">Text spinners</a></li>
-                    <li><a href="forum_main.html">Forum view</a></li>
-                    <li><a href="validation.html">Validation</a></li>
-                    <li><a href="tree_view.html">Tree view</a></li>
-                    <li><a href="loading_buttons.html">Loading buttons</a></li>
-                    <li><a href="chat_view.html">Chat view</a></li>
-                    <li><a href="masonry.html">Masonry</a></li>
-                    <li><a href="tour.html">Tour</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="typography.html">Typography</a></li>
-                    <li><a href="icons.html">Icons</a></li>
-                    <li><a href="draggable_panels.html">Draggable Panels</a></li> <li><a href="resizeable_panels.html">Resizeable Panels</a></li>
-                    <li><a href="buttons.html">Buttons</a></li>
-                    <li><a href="video.html">Video</a></li>
-                    <li><a href="tabs_panels.html">Panels</a></li>
-                    <li><a href="tabs.html">Tabs</a></li>
-                    <li><a href="notifications.html">Notifications & Tooltips</a></li>
-                    <li><a href="helper_classes.html">Helper css classes</a></li>
-                    <li><a href="badges_labels.html">Badges, Labels, Progress</a></li>
-                </ul>
-            </li>
+{{--            <li>--}}
+{{--                <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info float-right">NEW</span></a>--}}
+{{--                <ul class="nav nav-second-level collapse">--}}
+{{--                    <li><a href="toastr_notifications.html">Notification</a></li>--}}
+{{--                    <li><a href="nestable_list.html">Nestable list</a></li>--}}
+{{--                    <li><a href="agile_board.html">Agile board</a></li>--}}
+{{--                    <li><a href="timeline_2.html">Timeline v.2</a></li>--}}
+{{--                    <li><a href="diff.html">Diff</a></li>--}}
+{{--                    <li><a href="pdf_viewer.html">PDF viewer</a></li>--}}
+{{--                    <li><a href="i18support.html">i18 support</a></li>--}}
+{{--                    <li><a href="sweetalert.html">Sweet alert</a></li>--}}
+{{--                    <li><a href="idle_timer.html">Idle timer</a></li>--}}
+{{--                    <li><a href="truncate.html">Truncate</a></li>--}}
+{{--                    <li><a href="password_meter.html">Password meter</a></li>--}}
+{{--                    <li><a href="spinners.html">Spinners</a></li>--}}
+{{--                    <li><a href="spinners_usage.html">Spinners usage</a></li>--}}
+{{--                    <li><a href="tinycon.html">Live favicon</a></li>--}}
+{{--                    <li><a href="google_maps.html">Google maps</a></li>--}}
+{{--                    <li><a href="datamaps.html">Datamaps</a></li>--}}
+{{--                    <li><a href="social_buttons.html">Social buttons</a></li>--}}
+{{--                    <li><a href="code_editor.html">Code editor</a></li>--}}
+{{--                    <li><a href="modal_window.html">Modal window</a></li>--}}
+{{--                    <li><a href="clipboard.html">Clipboard</a></li>--}}
+{{--                    <li><a href="text_spinners.html">Text spinners</a></li>--}}
+{{--                    <li><a href="forum_main.html">Forum view</a></li>--}}
+{{--                    <li><a href="validation.html">Validation</a></li>--}}
+{{--                    <li><a href="tree_view.html">Tree view</a></li>--}}
+{{--                    <li><a href="loading_buttons.html">Loading buttons</a></li>--}}
+{{--                    <li><a href="chat_view.html">Chat view</a></li>--}}
+{{--                    <li><a href="masonry.html">Masonry</a></li>--}}
+{{--                    <li><a href="tour.html">Tour</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>--}}
+{{--                <ul class="nav nav-second-level collapse">--}}
+{{--                    <li><a href="typography.html">Typography</a></li>--}}
+{{--                    <li><a href="icons.html">Icons</a></li>--}}
+{{--                    <li><a href="draggable_panels.html">Draggable Panels</a></li> <li><a href="resizeable_panels.html">Resizeable Panels</a></li>--}}
+{{--                    <li><a href="buttons.html">Buttons</a></li>--}}
+{{--                    <li><a href="video.html">Video</a></li>--}}
+{{--                    <li><a href="tabs_panels.html">Panels</a></li>--}}
+{{--                    <li><a href="tabs.html">Tabs</a></li>--}}
+{{--                    <li><a href="notifications.html">Notifications & Tooltips</a></li>--}}
+{{--                    <li><a href="helper_classes.html">Helper css classes</a></li>--}}
+{{--                    <li><a href="badges_labels.html">Badges, Labels, Progress</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
 
-            <li>
-                <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>--}}
+{{--            </li>--}}
             <li>
                 <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Orders</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
@@ -106,49 +106,49 @@
                     <li><a href="ecommerce_payments.html">Credit Card form</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="basic_gallery.html">Lightbox Gallery</a></li>
-                    <li><a href="slick_carousel.html">Slick Carousel</a></li>
-                    <li><a href="carousel.html">Bootstrap Carousel</a></li>
+{{--            <li>--}}
+{{--                <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>--}}
+{{--                <ul class="nav nav-second-level collapse">--}}
+{{--                    <li><a href="basic_gallery.html">Lightbox Gallery</a></li>--}}
+{{--                    <li><a href="slick_carousel.html">Slick Carousel</a></li>--}}
+{{--                    <li><a href="carousel.html">Bootstrap Carousel</a></li>--}}
 
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li>
-                        <a href="#" id="damian">Third Level <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>--}}
+{{--                <ul class="nav nav-second-level collapse">--}}
+{{--                    <li>--}}
+{{--                        <a href="#" id="damian">Third Level <span class="fa arrow"></span></a>--}}
+{{--                        <ul class="nav nav-third-level">--}}
+{{--                            <li>--}}
+{{--                                <a href="#">Third Level Item</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="#">Third Level Item</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="#">Third Level Item</a>--}}
+{{--                            </li>--}}
 
-                        </ul>
-                    </li>
-                    <li><a href="#">Second Level Item</a></li>
-                    <li>
-                        <a href="#">Second Level Item</a></li>
-                    <li>
-                        <a href="#">Second Level Item</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info float-right">62</span></a>
-            </li>
-            <li class="landing_link">
-                <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning float-right">NEW</span></a>
-            </li>
-            <li class="special_link">
-                <a href="package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
-            </li>
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                    <li><a href="#">Second Level Item</a></li>--}}
+{{--                    <li>--}}
+{{--                        <a href="#">Second Level Item</a></li>--}}
+{{--                    <li>--}}
+{{--                        <a href="#">Second Level Item</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info float-right">62</span></a>--}}
+{{--            </li>--}}
+{{--            <li class="landing_link">--}}
+{{--                <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning float-right">NEW</span></a>--}}
+{{--            </li>--}}
+{{--            <li class="special_link">--}}
+{{--                <a href="package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>--}}
+{{--            </li>--}}
         </ul>
 
     </div>
