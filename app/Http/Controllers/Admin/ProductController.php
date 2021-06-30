@@ -45,9 +45,8 @@ class ProductController extends Controller
         {
             foreach ($request->file('images') as $image)
             {
-                $name = $image->getClientOriginalName();
-                $image->storeAs('images', $name, 'public');
-                $data[] = $name;
+                $image->store('public/images');
+                $data[] = $image->hashName();
             }
         }
         Product::create(array_merge($request->except(['images','_token']),['images' => $data]));
@@ -57,18 +56,20 @@ class ProductController extends Controller
 
     /**
      * @param Product $product
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show(Product $product)
     {
-        return view('admin/show_product_images', compact('product'));
+        if ($product->images){
+            return view('admin/show_product_images', compact('product'));
+        }else{
+            return redirect()->back()->with('success','product have not images!');
+        }
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Product $product)
     {
@@ -107,10 +108,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Product $product)
     {
