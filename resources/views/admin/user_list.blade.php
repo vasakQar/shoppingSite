@@ -50,7 +50,11 @@
                             <td>
                                 <form action="{{ route('user.block',$user->id)}}" method="POST" style="display: inline-block;">
                                     @csrf
-                                    <button class="btn btn-outline btn-danger dim"><i class="fa fa-warning"></i>block</button>
+                                    @if($user->status == 'free')
+                                        <button class="btn btn-outline btn-danger dim"><i class="fa fa-warning"></i>block</button>
+                                    @else
+                                        <button class="btn btn-outline btn-danger dim"><i class="fa fa-warning"></i>unblock</button>
+                                    @endif
                                 </form>
                             </td>
                             <td>
