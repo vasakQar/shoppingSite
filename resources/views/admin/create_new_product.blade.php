@@ -57,7 +57,14 @@
                     <div class="form-group">
                         <label for="image">Images</label>
                         <input type="file" class="form-control" placeholder="add_prod_images" name="images[]"  multiple/>
-                        <p class="text-danger">{{ $errors->first('images') }}</p>
+                        @if($errors)
+                            @foreach(json_decode($errors,1) as $key => $value)
+                                @if(stripos($key,'images') !== false)
+                                    <p class="text-danger">must be an image</p>
+                                    @break
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-rounded btn-block">Add New Product</button>

@@ -2,62 +2,6 @@
 
 @section('content')
     <div class="row">
-{{--        <div class="col-sm-6" >--}}
-
-{{--            <table class="table table-bordered">--}}
-{{--                <thead class="thead-light">--}}
-{{--                <tr>--}}
-{{--                    <th scope="col">#</th>--}}
-{{--                    <th scope="col">Name_En</th>--}}
-{{--                    <th scope="col">Name_Ru</th>--}}
-{{--                    <th scope="col">Name_Am</th>--}}
-{{--                    <th scope="col">Edit</th>--}}
-{{--                    <th scope="col">Delete</th>--}}
-{{--                </tr>--}}
-{{--                </thead>--}}
-{{--                @if(session('success'))--}}
-{{--                    <p class="alert alert-info">{{ session('success') }}</p>--}}
-{{--                @endif--}}
-{{--                <tbody>--}}
-{{--                <h1>Categories List</h1>--}}
-{{--                @foreach($categories as $category)--}}
-{{--                    <tr>--}}
-{{--                        <th scope="row">{{$category->id}}</th>--}}
-{{--                        <form method="post" action="{{route('categories.update',$category->id)}}">--}}
-{{--                            @method('PATCH')--}}
-{{--                            @csrf--}}
-{{--                            <td>--}}
-{{--                                <input type="text" name="name_am" value="{{$category->name_am}}">--}}
-{{--                            </td>--}}
-{{--                            <td>--}}
-{{--                                <input type="text" name="name_ru" value="{{$category->name_ru}}">--}}
-{{--                            </td>--}}
-{{--                            <td>--}}
-{{--                                <input type="text" name="name_en" value="{{$category->name_en}}">--}}
-{{--                            </td>--}}
-
-{{--                            <td>--}}
-{{--                                <button type="submit" class="btn btn-info">Update</button>--}}
-{{--                            </td>--}}
-{{--                        </form>--}}
-{{--                            <td>--}}
-{{--                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to unenroll?');" style="display: inline-block;">--}}
-{{--                                    @csrf--}}
-{{--                                    @method('DELETE')--}}
-{{--                                <button type="submit" class="btn btn-info">Update</button>--}}
-{{--                                    <input type="submit" class="btn btn-danger" value="X">--}}
-{{--                                </form>--}}
-{{--                            </td>--}}
-{{--                    </tr>--}}
-{{--                @endforeach--}}
-{{--                </tbody>--}}
-{{--            </table>--}}
-{{--            <div style="float: right;">--}}
-{{--                {{ $categories->links() }}--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-1"></div>--}}
-
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
@@ -97,7 +41,6 @@
                             <p class="alert alert-info">{{ session('success') }}</p>
                         @endif
                         <tbody>
-{{--                        <h1></h1>--}}
                         @foreach($categories as $category)
                             <tr>
                                 <th scope="row">{{$category->id}}</th>
@@ -141,7 +84,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="col-sm-4">
             <h1>Add New Category</h1>

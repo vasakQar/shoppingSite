@@ -5,6 +5,8 @@ use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\LoginController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
