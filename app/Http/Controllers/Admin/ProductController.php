@@ -18,9 +18,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -29,9 +27,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -49,9 +45,8 @@ class ProductController extends Controller
         {
             foreach ($request->file('images') as $image)
             {
-                $name = $image->getClientOriginalName();
-                $image->storeAs('images', $name, 'public');
-                $data[] = $name;
+                $image->store('public/images');
+                $data[] = $image->hashName();
             }
         }
         Product::create(array_merge($request->except(['images','_token']),['images' => $data]));
@@ -60,21 +55,21 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show(Product $product)
     {
-        return view('admin/show_product_images', compact('product'));
+        if ($product->images){
+            return view('admin/show_product_images', compact('product'));
+        }else{
+            return redirect()->back()->with('success','product have not images!');
+        }
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Product $product)
     {
@@ -83,11 +78,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ProductUpdateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ProductUpdateRequest $request)
     {
@@ -98,23 +90,15 @@ class ProductController extends Controller
         /**
          * move new images in images folder
          */
-        if ($request->hasFile('images'))
+        $oldImages = $product->images;
+        $data = $oldImages ? $oldImages : [];
+
+        if ($request->file('images'))
         {
             foreach ($request->file('images') as $image)
             {
-                $name = time().$image->getClientOriginalName();
-                $image->storeAs('images', $name, 'public');
-                $data[] = $name;
-            }
-        }
-        /**
-         * adding old images in data
-         */
-        $productImages = $product->images ;
-        if (is_array($productImages)){
-            foreach ($productImages as $productImage)
-            {
-                $data[] = $productImage;
+                $image->store('public/images');
+                $data[] = $image->hashName();
             }
         }
 
@@ -124,10 +108,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Product $product)
     {
