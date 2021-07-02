@@ -33,6 +33,7 @@ Route::prefix('/shop')->group(function () {
     Route::get('/wish_list', [ShopController::class, 'showWishList'])->name('products.wish.list');
     Route::get('/shopping_cart', [ShopController::class, 'showShoppingCart'])->name('shop.shopping.cart');
     Route::get('/quick_view', [ShopController::class, 'quickView'])->name('quick.view');
+    Route::get('/product_list/{data?}',[ShopController::class, 'showProductList'])->name('product.list');
 });
 
 /**

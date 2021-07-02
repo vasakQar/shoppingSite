@@ -156,7 +156,7 @@
                     <div class="navbar-collapse">
                         <h1>Trending</h1>
                         <ul class="nav navbar-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">Hot Products</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Special</a></li>
                             <li class=" "><a data-toggle="tab" href="#tab-2">New Arrivals</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-3" class="active">Todays Deals</a></li>
                         </ul>
