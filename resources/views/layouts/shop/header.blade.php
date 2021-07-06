@@ -351,11 +351,9 @@
             <div class="our-features-box hidden-xs">
                 <div class="features-block">
                     <div class="col-lg-9 col-md-9 col-xs-12 col-sm-9 offer-block">
-                        <a href="#">New Arrivals</a>
-                        <a href="#">Special</a>
-{{--                        <a href="#">Value of the day</a> --}}
-{{--                        <a href="#">Gift Cards</a>--}}
-                        <a href="#">Todays Deals</a>
+                        <a href="{{ route('product.list',['data' => 'NewArrivals','type' => 'list']) }}">New Arrivals</a>
+                        <a href="{{ route('product.list',['data' => 'Special','type' => 'list']) }}">Special</a>
+                        <a href="{{ route('product.list',['data' => 'TodaysDeals','type' => 'list']) }}">Todays Deals</a>
                     </div>
                 </div>
             </div>

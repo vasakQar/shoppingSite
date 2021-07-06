@@ -33,6 +33,7 @@ Route::prefix('/shop')->group(function () {
     Route::get('/wish_list', [ShopController::class, 'showWishList'])->name('products.wish.list');
     Route::get('/shopping_cart', [ShopController::class, 'showShoppingCart'])->name('shop.shopping.cart');
     Route::get('/quick_view', [ShopController::class, 'quickView'])->name('quick.view');
+    Route::get('/product_list/{data?}',[ShopController::class, 'showProductList'])->name('product.list');
 });
 
 /**
@@ -45,8 +46,8 @@ Route::prefix("admin")->group(function (){
     Route::post('/login', [LoginController::class,'login'])->name('admin.login.submit');
     Route::post('/logout', [LoginController::class,'logout'])->name('admin.logout');
     Route::get('/user_list', [App\Http\Controllers\Admin\IndexController::class, 'showUserList'])->name('admin.user.list');
-    Route::delete('user/{id}', [App\Http\Controllers\Admin\IndexController::class, 'deleteUser'])->name('user.destroy');
-    Route::post('user/{id}', [App\Http\Controllers\Admin\IndexController::class, 'blockUser'])->name('user.block');
+    Route::delete('user/{user}', [App\Http\Controllers\Admin\IndexController::class, 'deleteUser'])->name('user.destroy');
+    Route::post('user/{user}', [App\Http\Controllers\Admin\IndexController::class, 'blockUser'])->name('user.block');
     /**
      * resource for admin categories
      */
