@@ -111,7 +111,7 @@
                         </div>
                         <div class="category-products">
                             <ol class="products-list" id="products-list">
-                                @foreach($products as $product)
+                            @foreach($products as $product)
                                 <li class="item first">
                                     <div class="product-image"> <a href="product_detail.html" title="HTC Rhyme Sense"> <img class="small-image" src="{{ asset('storage/images')}}/{{($product->images)[0]}}" alt="HTC Rhyme Sense"> </a>
 
@@ -125,9 +125,16 @@
                                             <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#review-form">Add Your Review</a> </p>
                                         </div>
                                         <div class="desc std">
-                                            <p>{{ $product->description_en }} </p>
-                                            <p>Sed sed interdum diam. Donec sit ametenim tempor, dapibus nunc eu,
-                                                tincidunt mi. Vivamus dictum nec... <a class="link-learn" title="" href="product_detail.html">Learn More</a> </p>
+                                            <p>
+                                                {{ \Illuminate\Support\Str::limit($product->description_en, 100, '') }}
+                                                @if (strlen($product->description_en) > 100)
+                                                    <span class="readDot">...</span>
+                                                    <span class="readText" style="display:  none;">{{ substr($product->description_en, 100) }}</span>
+                                                @endif
+                                            </p>
+                                            @if (strlen($product->description_en) > 100)
+                                                <button class="readMore btn btn-primary btn-small" id="myBtn">Read more</button>
+                                            @endif
                                         </div>
                                         <div class="price-box">
                                             <p class="old-price"> <span class="price-label"></span> <span class="price"> ${{$product->old_price}} </span> </p>
@@ -473,4 +480,12 @@
 
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/jquery.mobile-menu.min.js')}}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.readMore').on('click', function (){
+                $(this).prev().children().eq(0).toggle()
+                $(this).prev().children().eq(1).toggle()
+            })
+        });
+    </script>
 @endsection
