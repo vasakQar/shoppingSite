@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -17,7 +19,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('shop/index');
+        $bestSellers = Order::with('product')->select('orders.*', DB::raw('SUM(quantity) as count'))->groupBy('product_id')->orderBy('count','DESC')->get();
+        return view('shop/index',compact('bestSellers'));
     }
 
     /**
@@ -67,6 +70,7 @@ class ShopController extends Controller
         if ($data == 'NewArrivals'){
             $date = Carbon::now()->subDays(7);
             $products = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->paginate(15);
+
             if ($list == 'list'){
                 return view('shop/list',compact('products','data'));
             }else{

@@ -129,7 +129,14 @@
                                         <div class="item-info">
                                             <div class="info-inner">
                                                 <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">{{$product->name}}</a> </div>
-                                                <div class="brand">{{$product->category->name_en}}</div>
+                                                <div class="brand">
+                                                    <p>
+                                                        {{ \Illuminate\Support\Str::limit($product->description_en, 50, '...') }}
+                                                    </p>
+                                                    @if (strlen($product->description_en) > 50)
+                                                        <a class="readMore" href="product_detail.html">Read more</a>
+                                                    @endif
+                                                </div>
                                                 <div class="rating">
                                                     <div class="ratings">
                                                         <div class="rating-box">
