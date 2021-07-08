@@ -20,7 +20,17 @@ class ShopController extends Controller
     public function index()
     {
         $bestSellers = Order::with('product')->select('orders.*', DB::raw('SUM(quantity) as count'))->groupBy('product_id')->orderBy('count','DESC')->get();
-        return view('shop/index',compact('bestSellers'));
+
+        $date = Carbon::now()->subDays(7);
+        $newArrivalsProducts = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->get();
+
+//         todo vercnel esorva vacharvac aprqanqner@
+//            $date = Carbon::now()->startOfDay();
+//            $todayProduct = Product::where('created_at', '>=', $date)->get();
+
+
+
+        return view('shop/index',compact('bestSellers','newArrivalsProducts'));
     }
 
     /**
@@ -65,11 +75,18 @@ class ShopController extends Controller
      */
     public function showProductList(Request $request)
     {
-        $data = $request->data;
-        $list = $request->type;
+        $sortBy = $request->sortBy;
+        $data   = $request->data;
+        $list   = $request->type;
         if ($data == 'NewArrivals'){
             $date = Carbon::now()->subDays(7);
-            $products = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->paginate(15);
+            if ($sortBy == 'name'){
+                $products = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->orderBy('name','ASC')->paginate(15);
+            }elseif ($sortBy == 'price'){
+                $products = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->orderBy('price','ASC')->paginate(15);
+            }else{
+                $products = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->paginate(15);
+            }
 
             if ($list == 'list'){
                 return view('shop/list',compact('products','data'));
@@ -77,12 +94,12 @@ class ShopController extends Controller
                 return view('shop/grid',compact('products','data'));
             }
         }elseif($data == 'Special'){
-            dd($data);
+            dd($data,55555555);
         }else{
             // todo vercnel esorva vacharvac aprqanqner@
 //            $date = Carbon::now()->startOfDay();
 //            $todayProduct = Product::where('created_at', '>=', $date)->get();
-            dd($data);
+            dd($data,66666666666666);
         }
         return view('shop/list');
     }

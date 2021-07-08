@@ -85,9 +85,9 @@
                                         <ul>
                                             <li><a href="#">Position<span class="right-arrow"></span></a>
                                                 <ul>
-                                                    <li><a href="#">Name</a></li>
-                                                    <li><a href="#">Price</a></li>
-                                                    <li><a href="#">Position</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'list','sortBy' => 'name']) }}>Name</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'list','sortBy' => 'price']) }}>Price</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'list','sortBy' => 'position']) }}>Position</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -162,9 +162,9 @@
                                         <ul>
                                             <li><a href="#">Position<span class="right-arrow"></span></a>
                                                 <ul>
-                                                    <li><a href="#">Name</a></li>
-                                                    <li><a href="#">Price</a></li>
-                                                    <li><a href="#">Position</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'list','sortBy' => 'name']) }}>Name</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'list','sortBy' => 'price']) }}>Price</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'list','sortBy' => 'position']) }}>Position</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
