@@ -71,7 +71,9 @@
                         <div class="toolbar">
                             <div class="display-product-option">
                                 <div class="sorter">
-                                    <div class="view-mode"> <span title="Grid" class="button button-active button-grid">&nbsp;</span><a href="{{ route('product.list',['data' => $data,'type' => 'list']) }}" title="List" class="button-list">&nbsp;</a> </div>
+                                    <div class="view-mode"> <span title="Grid" class="button button-active button-grid">&nbsp;</span>
+                                        <a href="{{ route('product.list',['data' => $data,'type' => 'list']) }}" title="List" class="button-list">&nbsp;</a>
+                                    </div>
                                 </div>
                                 <div class="pages">
                                     <label>Page:</label>
@@ -85,9 +87,9 @@
                                         <ul>
                                             <li><a href="#">Position<span class="right-arrow"></span></a>
                                                 <ul>
-                                                    <li><a href="#">Name</a></li>
-                                                    <li><a href="#">Price</a></li>
-                                                    <li><a href="#">Position</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'name']) }}>Name</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'price']) }}>Price</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'position']) }}>Position</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -112,7 +114,7 @@
                         <div class="category-products">
                             <ul class="products-grid">
                                 @foreach($products as $product)
-                                <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6" style="max-height: 380px;">
                                     <div class="item-inner">
                                         <div class="item-img">
                                             <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="{{ asset('storage/images')}}/{{($product->images)[0]}}" style="max-width: 250px;"> </a>
@@ -129,7 +131,7 @@
                                         <div class="item-info">
                                             <div class="info-inner">
                                                 <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">{{$product->name}}</a> </div>
-                                                <div class="brand">
+                                                <div class="brand" style="height:76px; ">
                                                     <p>
                                                         {{ \Illuminate\Support\Str::limit($product->description_en, 50, '...') }}
                                                     </p>
@@ -174,9 +176,9 @@
                                         <ul>
                                             <li><a href="#">Position<span class="right-arrow"></span></a>
                                                 <ul>
-                                                    <li><a href="#">Name</a></li>
-                                                    <li><a href="#">Price</a></li>
-                                                    <li><a href="#">Position</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'name']) }}>Name</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'price']) }}>Price</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'position']) }}>Position</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

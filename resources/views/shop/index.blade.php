@@ -157,7 +157,7 @@
                         <h1>Trending</h1>
                         <ul class="nav navbar-nav">
                             <li class="active"><a data-toggle="tab" href="#tab-1">Special</a></li>
-                            <li class=" "><a data-toggle="tab" href="#tab-2">New Arrivals</a></li>
+                            <li class=" "><a data-toggle="tab" href="#newArrivals">New Arrivals</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-3" class="active">Todays Deals</a></li>
                         </ul>
                     </div>
@@ -335,126 +335,77 @@
                                 </div>
 
                                 <!-- tab product -->
-                                <div class="tab-panel " id="tab-2">
-                                    <div class="category-products">
-                                        <ul class="products-grid">
-                                            <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" href="product_detail.html"> <img alt="" src="{{asset('products-images/product17.jpg')}}"> </a>
-
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
-                                                                </ul>
-                                                            </div>
+                                <div class="tab-panel " id="newArrivals">
+                                    <div class="container">
+                                        <div class="bestsell-pro">
+                                            <div>
+                                                <div class="slider-items-products">
+                                                    <div class="bestsell-block">
+                                                        <div class="block-title">
+                                                            <h2>
+                                                                New Arrivals
+                                                            </h2>
                                                         </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a href="product_detail.html"> Impulse Climate Proof Mountain Rucksack </a> </div>
-                                                            <div class="brand">Impulse</div>
-                                                            <div class="rating">
-                                                                <div class="ratings">
-                                                                    <div class="rating-box">
-                                                                        <div style="width:80%" class="rating"></div>
+                                                        <div id="bestsell-slider" class="product-flexslider hidden-buttons">
+                                                            <div class="slider-items slider-width-col4 products-grid block-content">
+                                                                @foreach($newArrivalsProducts as $item)
+                                                                    <div class="item">
+                                                                        <div class="item-inner">
+                                                                            <div class="item-img">
+                                                                                <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{ asset('storage/images')}}/{{($item->images)[0]}}"> </a>
+                                                                                    <div class="new-label new-top-left">new</div>
+                                                                                    <div class="box-hover">
+                                                                                        <ul class="add-to-links">
+                                                                                            <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
+                                                                                            <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="item-info">
+                                                                                <div class="info-inner">
+                                                                                    <div class="item-title">
+                                                                                        <p>
+                                                                                            {{ \Illuminate\Support\Str::limit($item->description_en, 80, '') }}
+                                                                                            @if (strlen($item->description_en) > 80)
+                                                                                                <span class="readDot">...</span>
+                                                                                                <span class="readText" style="display:  none;">{{ substr($item->description_en, 80) }}</span>
+                                                                                            @endif
+                                                                                        </p>
+                                                                                        @if (strlen($item->description_en) > 80)
+                                                                                            <button class="readMore btn btn-primary btn-small" id="myBtn">Read more</button>
+                                                                                        @endif
+                                                                                    </div>
+                                                                                    <div class="brand">{{$item->name}}</div>
+                                                                                    <div class="rating">
+                                                                                        <div class="ratings">
+                                                                                            <div class="rating-box">
+                                                                                                <div style="width:80%" class="rating"></div>
+                                                                                            </div>
+                                                                                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="item-content">
+                                                                                        <div class="item-price">
+                                                                                            <div class="price-box"> <span class="regular-price"> <span class="price">${{$item->price}}</span> </span> </div>
+                                                                                        </div>-
+                                                                                        <div class="action">
+                                                                                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-content">
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>
-                                                                </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End  Item inner-->
-                                            </li>
-                                            <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" href="product_detail.html"> <img alt="" src="{{asset('products-images/product15.jpg')}}"> </a>
-
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a href="product_detail.html"> Lavie Roma Women's grey Clutch Bags </a> </div>
-                                                            <div class="brand">Livia</div>
-                                                            <div class="rating">
-                                                                <div class="ratings">
-                                                                    <div class="rating-box">
-                                                                        <div style="width:80%" class="rating"></div>
-                                                                    </div>
-                                                                    <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-content">
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End  Item inner-->
-                                            </li>
-                                            <li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                                <div class="item-inner">
-                                                    <div class="item-img">
-                                                        <div class="item-img-info"> <a class="product-image" href="product_detail.html"> <img alt="" src="{{asset('products-images/product12.jpg')}}"> </a>
-
-                                                            <div class="box-hover">
-                                                                <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>
-                                                                    <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="info-inner">
-                                                            <div class="item-title"> <a href="product_detail.html">Silk Flared Full Length Pink Women's Skirt</a> </div>
-                                                            <div class="brand">Just Wow</div>
-                                                            <div class="rating">
-                                                                <div class="ratings">
-                                                                    <div class="rating-box">
-                                                                        <div style="width:80%" class="rating"></div>
-                                                                    </div>
-                                                                    <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-content">
-                                                                <div class="item-price">
-                                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>
-                                                                </div>
-                                                                <div class="action">
-                                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End  Item inner-->
-                                            </li>
-
-                                        </ul>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="tab-panel " id="tab-3">
                                     <div class="category-products">
@@ -646,232 +597,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                                <!-- Item -->
-{{--                                <div class="item">--}}
-{{--                                    <div class="item-inner">--}}
-{{--                                        <div class="item-img">--}}
-{{--                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{asset('products-images/product21.jpg')}}"> </a>--}}
-{{--                                                <div class="box-hover">--}}
-{{--                                                    <ul class="add-to-links">--}}
-{{--                                                        <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>--}}
-{{--                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="item-info">--}}
-{{--                                            <div class="info-inner">--}}
-{{--                                                <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">Golden Black Brown Full Rim Aviator Shape</a> </div>--}}
-{{--                                                <div class="brand">Vincent</div>--}}
-{{--                                                <div class="item-content">--}}
-{{--                                                    <div class="rating">--}}
-{{--                                                        <div class="ratings">--}}
-{{--                                                            <div class="rating-box">--}}
-{{--                                                                <div style="width:80%" class="rating"></div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="item-price">--}}
-{{--                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$325.00</span> </span> </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="action">--}}
-{{--                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- End Item -->--}}
-{{--                                <!-- Item -->--}}
-{{--                                <div class="item">--}}
-{{--                                    <div class="item-inner">--}}
-{{--                                        <div class="item-img">--}}
-{{--                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{asset('products-images/product11.jpg')}}"> </a>--}}
-{{--                                                <div class="box-hover">--}}
-{{--                                                    <ul class="add-to-links">--}}
-{{--                                                        <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>--}}
-{{--                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="item-info">--}}
-{{--                                            <div class="info-inner">--}}
-{{--                                                <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">Silk Flared Full Length Pink Women's Skirt</a> </div>--}}
-{{--                                                <div class="brand">justrin</div>--}}
-{{--                                                <div class="item-content">--}}
-{{--                                                    <div class="rating">--}}
-{{--                                                        <div class="ratings">--}}
-{{--                                                            <div class="rating-box">--}}
-{{--                                                                <div style="width:80%" class="rating"></div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="item-price">--}}
-{{--                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$245.00</span> </span> </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="action">--}}
-{{--                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- End Item -->--}}
-{{--                                <div class="item">--}}
-
-{{--                                    <div class="item-inner">--}}
-{{--                                        <div class="item-img">--}}
-{{--                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{asset('products-images/product12.jpg')}}"> </a>--}}
-{{--                                                <div class="new-label new-top-left">new</div>--}}
-{{--                                                <div class="box-hover">--}}
-{{--                                                    <ul class="add-to-links">--}}
-{{--                                                        <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>--}}
-{{--                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="item-info">--}}
-{{--                                            <div class="info-inner">--}}
-{{--                                                <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">Lifestyle Stainless Steel Flask, 1000ml</a> </div>--}}
-{{--                                                <div class="brand">Cello</div>--}}
-{{--                                                <div class="rating">--}}
-{{--                                                    <div class="ratings">--}}
-{{--                                                        <div class="rating-box">--}}
-{{--                                                            <div style="width:80%" class="rating"></div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="item-content">--}}
-{{--                                                    <div class="item-price">--}}
-{{--                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="action">--}}
-{{--                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- Item -->--}}
-{{--                                <div class="item">--}}
-{{--                                    <div class="item-inner">--}}
-{{--                                        <div class="item-img">--}}
-{{--                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{asset('products-images/product10.jpg')}}"> </a>--}}
-{{--                                                <div class="box-hover">--}}
-{{--                                                    <ul class="add-to-links">--}}
-{{--                                                        <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>--}}
-{{--                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="item-info">--}}
-{{--                                            <div class="info-inner">--}}
-{{--                                                <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">Zacharias Mens &amp; Women Printed Fedora Hat</a> </div>--}}
-{{--                                                <div class="brand">Zacharias</div>--}}
-{{--                                                <div class="rating">--}}
-{{--                                                    <div class="ratings">--}}
-{{--                                                        <div class="rating-box">--}}
-{{--                                                            <div style="width:80%" class="rating"></div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="item-content">--}}
-{{--                                                    <div class="item-price">--}}
-{{--                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="action">--}}
-{{--                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- End Item -->--}}
-{{--                                <div class="item">--}}
-{{--                                    <div class="item-inner">--}}
-{{--                                        <div class="item-img">--}}
-{{--                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{asset('products-images/product16.jpg')}}"> </a>--}}
-{{--                                                <div class="box-hover">--}}
-{{--                                                    <ul class="add-to-links">--}}
-{{--                                                        <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>--}}
-{{--                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="item-info">--}}
-{{--                                            <div class="info-inner">--}}
-{{--                                                <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">Lifestyle Stainless Steel Flask, 1000ml</a> </div>--}}
-{{--                                                <div class="brand">Cello</div>--}}
-{{--                                                <div class="rating">--}}
-{{--                                                    <div class="ratings">--}}
-{{--                                                        <div class="rating-box">--}}
-{{--                                                            <div style="width:80%" class="rating"></div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="item-content">--}}
-{{--                                                    <div class="item-price">--}}
-{{--                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="action">--}}
-{{--                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- Item -->--}}
-{{--                                <div class="item">--}}
-{{--                                    <div class="item-inner">--}}
-{{--                                        <div class="item-img">--}}
-{{--                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{asset('products-images/product19.jpg')}}"> </a>--}}
-{{--                                                <div class="box-hover">--}}
-{{--                                                    <ul class="add-to-links">--}}
-{{--                                                        <li><a class="link-quickview" href="{{ route('quick.view') }}"></a> </li>--}}
-{{--                                                        <li><a class="link-wishlist" href="{{ route('products.wish.list') }}"></a> </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="item-info">--}}
-{{--                                            <div class="info-inner">--}}
-{{--                                                <div class="item-title"> <a title="Retis lapen casen" href="product_detail.html">Cotton Honeycomb Hamam Bath Towel</a> </div>--}}
-{{--                                                <div class="brand">Linen</div>--}}
-{{--                                                <div class="rating">--}}
-{{--                                                    <div class="ratings">--}}
-{{--                                                        <div class="rating-box">--}}
-{{--                                                            <div style="width:80%" class="rating"></div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="item-content">--}}
-{{--                                                    <div class="item-price">--}}
-{{--                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$88.00</span> </span> </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="action">--}}
-{{--                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                <!-- End Item -->
                             </div>
                         </div>
                     </div>
