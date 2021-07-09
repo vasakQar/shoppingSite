@@ -65,10 +65,10 @@
                 <div class="col-md-3 col-sm-6">
                     <h4>Contact Us</h4>
                     <div class="contacts-info">
-                        <address><i class="add-icon"></i>ThemesGround, 789 Main rd,<br> Anytown, CA 12345 USA<br>
+                        <address><i class="add-icon"></i>{{$contact[0]->address}}<br>
                         </address>
-                        <div class="phone-footer"><i class="phone-icon"></i>+ 888 456-7890</div>
-                        <div class="email-footer"><i class="email-icon"></i><a href="mailto:abc@example.com">Qualis@themesground.com</a></div>
+                        <div class="phone-footer"><i class="phone-icon"></i>+ {{$contact[0]->phone}}</div>
+                        <div class="email-footer"><i class="email-icon"></i><a href="mailto:abc@example.com">{{$contact[0]->email}}</a></div>
                     </div>
                 </div>
             </div>
@@ -80,13 +80,13 @@
                 <div class="col-xs-12 col-sm-4">
                     <div class="social">
                         <ul>
-                            <li class="fb"><a href="#"></a></li>
-                            <li class="tw"><a href="#"></a></li>
-                            <li class="googleplus"><a href="#"></a></li>
-                            <li class="rss"><a href="#"></a></li>
-                            <li class="pintrest"><a href="#"></a></li>
-                            <li class="linkedin"><a href="#"></a></li>
-                            <li class="youtube"><a href="#"></a></li>
+                            <li class="fb"><a href="{{$socialSites[0]->facebook}}"></a></li>
+                            <li class="tw"><a href="{{$socialSites[0]->twitter}}"></a></li>
+                            <li class="googleplus"><a href="{{$socialSites[0]->googleplus}}"></a></li>
+                            <li class="rss"><a href="{{$socialSites[0]->rss}}"></a></li>
+                            <li class="pintrest"><a href="{{$socialSites[0]->pintrest}}"></a></li>
+                            <li class="linkedin"><a href="{{$socialSites[0]->linkedin}}"></a></li>
+                            <li class="youtube"><a href="{{$socialSites[0]->youtube}}"></a></li>
                         </ul>
                     </div>
                 </div>

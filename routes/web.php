@@ -57,6 +57,12 @@ Route::prefix("admin")->group(function (){
      */
     Route::resource('/products' , 'App\Http\Controllers\Admin\ProductController' );
     Route::delete('/delete_product_image/{imgName}/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteProductImage'])->name('delete.product.image');
+    /**
+     * resource for contact us
+     */
+    Route::resource('contactUs','App\Http\Controllers\Admin\ContactController');
+
+    Route::resource('socialSites','App\Http\Controllers\Admin\SocialSitesController');
 
 });
 

@@ -106,15 +106,18 @@
                     <li><a href="ecommerce_payments.html">Credit Card form</a></li>
                 </ul>
             </li>
-{{--            <li>--}}
-{{--                <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>--}}
-{{--                <ul class="nav nav-second-level collapse">--}}
-{{--                    <li><a href="basic_gallery.html">Lightbox Gallery</a></li>--}}
-{{--                    <li><a href="slick_carousel.html">Slick Carousel</a></li>--}}
-{{--                    <li><a href="carousel.html">Bootstrap Carousel</a></li>--}}
+            <li>
+                <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Contact Info</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('contactUs.index')}}">Contact Us</a></li>
+                    <li><a href="slick_carousel.html">Information</a></li>
+                    <li><a href="carousel.html">Style Advisor</a></li>
+                    <li><a href="carousel.html">Shopping Guide</a></li>
+                    <li><a href="{{route('socialSites.index')}}">Online Platform:</a></li>
+                    <li><a href="carousel.html">Payment Methods</a></li>
 
-{{--                </ul>--}}
-{{--            </li>--}}
+                </ul>
+            </li>
 {{--            <li>--}}
 {{--                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>--}}
 {{--                <ul class="nav nav-second-level collapse">--}}

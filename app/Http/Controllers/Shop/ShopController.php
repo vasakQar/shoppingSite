@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\ContactUs;
+use App\Models\Admin\SocialSite;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
@@ -10,15 +12,25 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\DB;
+use View;
 
 class ShopController extends Controller
 {
+    public function __construct()
+    {
+        $contact = ContactUs::all();
+        $socialSites = SocialSite::all();
+        View::share('contact', $contact);
+        View::share('socialSites',$socialSites);
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      * show shop index page
      */
     public function index()
     {
+
         $bestSellers = Order::with('product')->select('orders.*', DB::raw('SUM(quantity) as count'))->groupBy('product_id')->orderBy('count','DESC')->get();
 
         $date = Carbon::now()->subDays(7);
