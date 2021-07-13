@@ -115,6 +115,7 @@
                     <li><a href="carousel.html">Shopping Guide</a></li>
                     <li><a href="{{route('socialSites.index')}}">Online Platform:</a></li>
                     <li><a href="carousel.html">Payment Methods</a></li>
+                    <li><a href="{{route('headerInfo.index')}}">Header Info</a></li>
 
                 </ul>
             </li>

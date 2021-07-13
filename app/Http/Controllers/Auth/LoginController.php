@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\ContactInfo\ContacUs;
+use App\Models\Admin\ContactInfo\HeaderInfo;
+use App\Models\Admin\ContactInfo\SocialSite;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use View;
 
 class LoginController extends Controller
 {
@@ -36,6 +40,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $contact     = ContacUs::all();
+        $socialSites = SocialSite::all();
+        $headerInfo  = HeaderInfo::all();
+        View::share('contact', $contact);
+        View::share('socialSites',$socialSites);
+        View::share('headerInfo',$headerInfo);
         $this->middleware('guest')->except('logout');
     }
 

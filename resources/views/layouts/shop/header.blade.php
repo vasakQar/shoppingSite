@@ -84,10 +84,10 @@
             <div class="col-lg-7 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
                 <div class="contact-row">
                     <div class="phone inline">
-                        <i class="fa fa-phone"></i> (+800) 123 456 7890
+                        <i class="fa fa-phone"></i> +{{$headerInfo[0]->phone}}
                     </div>
                     <div class="contact inline">
-                        <i class="fa fa-envelope"></i> contact@<span class="le-color">oursupport.com</span>
+                        <i class="fa fa-envelope"></i><span class="le-color">{{$headerInfo[0]->email}}</span>
                     </div>
                 </div>
                 <div class="search-box">

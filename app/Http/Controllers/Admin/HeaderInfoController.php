@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SocialSitesCreateRequest;
-use App\Models\Admin\ContactInfo\SocialSite;
+use App\Http\Requests\HeaderInfoCreateRequest;
+use App\Models\Admin\ContactInfo\HeaderInfo;
 use Illuminate\Http\Request;
 
-class SocialSitesController extends Controller
+class HeaderInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class SocialSitesController extends Controller
      */
     public function index()
     {
-        $socialSites = SocialSite::all();
-        return view('admin/contact/social_sites',compact('socialSites'));
+        $headerInfo = HeaderInfo::all();
+        return view('admin/contact/header_info',compact('headerInfo'));
     }
 
     /**
@@ -36,10 +36,10 @@ class SocialSitesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SocialSitesCreateRequest $request)
+    public function store(HeaderInfoCreateRequest $request)
     {
-        SocialSite::create($request->all());
-        return back()->with('message', 'Contacts has been added successfully!');
+        HeaderInfo::create($request->all());
+        return back()->with('message','Header info has been created successfully!');
     }
 
     /**
@@ -84,9 +84,8 @@ class SocialSitesController extends Controller
      */
     public function destroy($id)
     {
-        $socialSite = SocialSite::findOrFail($id);
-        $socialSite->delete();
-
-        return back()->with('delete','this link has been deleted successfully!');
+        $headerInfo = HeaderInfo::findOrFail($id);
+        $headerInfo->delete();
+        return back()->with('delete','Info has been deleted successfully!');
     }
 }

@@ -48,12 +48,14 @@
                                     <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
                                         <div class="new-label new-top-left"> New </div>
                                         <div class="product-image">
-                                            <div class="product-full"> <img id="product-zoom" src="{{asset('products-images/product5.jpg')}}" data-zoom-image="{{asset('products-images/product5.jpg')}}" alt="product-image"/> </div>
+                                            <div class="product-full"> <img id="product-zoom" src="{{ asset('storage/images')}}/{{($product->images)[0]}}" data-zoom-image="{{ asset('storage/images')}}/{{($product->images)[0]}}" alt="product-image"/> </div>
                                             <div class="more-views">
                                                 <div class="slider-items-products">
                                                     <div id="gallery_01" class="product-flexslider hidden-buttons product-img-thumb">
                                                         <div class="slider-items slider-width-col4 block-content">
-                                                            <div class="more-views-items"> <a href="#" data-image="products-images/product2.jpg')}}" data-zoom-image="products-images/product2.jpg')}}"> <img id="product-zoom0"  src="{{asset('products-images/product2.jpg')}}" alt="product-image"/> </a></div>
+                                                            @foreach($product->images as $image)
+                                                                <div class="more-views-items" id=""> <a href="#" data-image="products-images/product2.jpg')}}" data-zoom-image="products-images/product2.jpg')}}"> <img id="product-zoom0" class="itemImage"  src="{{ asset('storage/images')}}/{{$image}}" alt="product-image"/> </a></div>
+                                                            @endforeach
                                                             <div class="more-views-items"> <a href="#" data-image="products-images/product3.jpg')}}" data-zoom-image="products-images/product3.jpg')}}"> <img id="product-zoom1"  src="{{asset('products-images/product3.jpg')}}" alt="product-image"/> </a></div>
                                                             <div class="more-views-items"> <a href="#" data-image="products-images/product4.jpg')}}" data-zoom-image="products-images/product4.jpg')}}"> <img id="product-zoom2"  src="{{asset('products-images/product4.jpg')}}" alt="product-image"/> </a></div>
                                                             <div class="more-views-items"> <a href="#" data-image="products-images/product5.jpg')}}" data-zoom-image="products-images/product5.jpg')}}"> <img id="product-zoom3"  src="{{asset('products-images/product5.jpg')}}" alt="product-image"/> </a> </div>
@@ -69,7 +71,7 @@
                                         <div class="product-next-prev"> <a class="product-next" href="#"><span></span></a> <a class="product-prev" href="#"><span></span></a> </div>
                                         <div class="brand">XPERIA</div>
                                         <div class="product-name">
-                                            <h1>Bacca Bucci Men's Running Shoes</h1>
+                                            <h1>{{$product->name}}</h1>
                                         </div>
                                         <div class="ratings">
                                             <div class="rating-box">
@@ -80,9 +82,8 @@
                                         <div class="price-block">
                                             <div class="price-box">
                                                 <p class="availability in-stock"><span>In Stock</span></p>
-                                                <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> $309.99 </span> </p>
-                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>
-
+                                                <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> ${{$product->price}} </span> </p>
+                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> ${{$product->old_price}} </span> </p>
                                             </div>
                                         </div>
                                         <div class="add-to-box">
@@ -99,7 +100,7 @@
 
                                         </div>
                                         <div class="short-description">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Donec a neque libero. </p>
+                                            <p>{{$product->description_en}}</p>
                                         </div>
                                         <div class="email-addto-box">
                                             <ul class="add-to-links">
@@ -140,10 +141,8 @@
                                     <div id="productTabContent" class="tab-content">
                                         <div class="tab-pane fade in active" id="product_tabs_description">
                                             <div class="std">
-                                                <img alt="" src="{{asset('images/shoes-img.jpg')}}" style="float:right">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Donec a neque libero. Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. in imperdiet ligula euismod eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. in imperdiet ligula euismod eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-                                                <p>Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin rhoncus, ultricies posuere erat. Duis convallis, arcu nec aliquam consequat, purus felis vehicula felis, a dapibus enim lorem nec augue.</p>
-                                                <p> Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis.</p>
+                                                <img alt="" src="{{ asset('storage/images')}}/{{($product->images)[0]}}" style="float:right;max-width: 280px;">
+                                                <p>{{$product->description_en}}</p>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="product_tabs_tags">
@@ -898,4 +897,17 @@
 <script type="text/javascript" src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.mobile-menu.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/cloud-zoom.js')}}"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.itemImage').on('click', function (){
+            let src = $(this).attr('src');
+            $('#product-zoom').attr('src',src);
+            $('#product-zoom').data('zoom-image',src).elevateZoom({
+                responsive: true,
+                zoomType: "lens",
+                containLensZoom: true
+            });
+        })
+    });
+</script>
 @endsection

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\ContactUs;
-use App\Models\Admin\SocialSite;
+use App\Http\Requests\UserSubscribeRequest;
+use App\Models\Admin\ContactInfo\HeaderInfo;
+use App\Models\Admin\ContactInfo\ContacUs;
+use App\Models\Admin\ContactInfo\SocialSite;
+use App\Models\Admin\Subscribe;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
@@ -18,10 +21,12 @@ class ShopController extends Controller
 {
     public function __construct()
     {
-        $contact = ContactUs::all();
+        $contact     = ContacUs::all();
         $socialSites = SocialSite::all();
+        $headerInfo  = HeaderInfo::all();
         View::share('contact', $contact);
         View::share('socialSites',$socialSites);
+        View::share('headerInfo',$headerInfo);
     }
 
     /**
@@ -49,9 +54,10 @@ class ShopController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      * show product detail
      */
-    public function showProductDetail()
+    public function showProductDetail($id)
     {
-        return view('shop/product_detail');
+        $product = Product::findOrFail($id);
+        return view('shop/product_detail',compact('product'));
     }
 
     /**
@@ -114,6 +120,12 @@ class ShopController extends Controller
             dd($data,66666666666666);
         }
         return view('shop/list');
+    }
+
+    public function userSubscribe(UserSubscribeRequest $request)
+    {
+        Subscribe::create($request->all());
+        return back();
     }
 
 }

@@ -551,7 +551,10 @@
                                 <div class="item">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="" src="{{ asset('storage/images')}}/{{($item->product->images)[0]}}"> </a>
+                                            <div class="item-img-info">
+                                                <a class="product-image" title="Retis lapen casen" href="{{route('shop.product.detail',['id' => $item->product_id])}}">
+                                                    <img alt="" src="{{ asset('storage/images')}}/{{($item->product->images)[0]}}">
+                                                </a>
                                                 <div class="new-label new-top-left">new</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsCreateRequest;
-use App\Models\Admin\ContactUs;
+use App\Models\Admin\ContactInfo\ContacUs;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = ContactUs::all();
+        $contacts = ContacUs::all();
         return view('admin/contact/contact_us',compact('contacts'));
     }
 
@@ -34,7 +34,7 @@ class ContactController extends Controller
      */
     public function store(ContactUsCreateRequest $request)
     {
-        ContactUs::create($request->all());
+        ContacUs::create($request->all());
         return back()->with('message', 'Contacts has been added successfully!');
 
     }
@@ -79,7 +79,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $contactUs = ContactUs::findOrFail($id);
+        $contactUs = ContacUs::findOrFail($id);
         $contactUs->delete();
         return redirect()->back()->with('delete','Contact deleted successfully');
     }

@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Mail\SubscribeMail;
+use App\Models\Admin\Subscribe;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\DeclareDeclare;
 use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
@@ -41,6 +45,7 @@ class ProductController extends Controller
      */
     public function store(ProductCreateRequest $request)
     {
+//        dd($request->all());
         if ($request->hasFile('images'))
         {
             foreach ($request->file('images') as $image)
@@ -50,6 +55,18 @@ class ProductController extends Controller
             }
         }
         Product::create(array_merge($request->except(['images','_token']),['images' => $data]));
+        /**
+         * this product send email subscribed users
+         */
+        $data = [
+            'name' => $request->name,
+            'price' => $request->price,
+        ];
+        $subscribedUsers = Subscribe::all();
+        foreach ($subscribedUsers as $subscribedUser)
+        {
+            Mail::to("$subscribedUser->email")->send(new SubscribeMail($data));
+        }
 
         return back()->with('message', 'Product has been created successfully!');
     }
