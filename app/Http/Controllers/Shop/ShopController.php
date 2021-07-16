@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\DB;
 use View;
+use App;
+use Route;
 
 class ShopController extends Controller
 {
@@ -93,6 +95,7 @@ class ShopController extends Controller
      */
     public function showProductList(Request $request)
     {
+
         $sortBy = $request->sortBy;
         $data   = $request->data;
         $list   = $request->type;

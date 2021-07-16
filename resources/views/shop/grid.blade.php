@@ -72,7 +72,7 @@
                             <div class="display-product-option">
                                 <div class="sorter">
                                     <div class="view-mode"> <span title="Grid" class="button button-active button-grid">&nbsp;</span>
-                                        <a href="{{ route('product.list',['data' => $data,'type' => 'list']) }}" title="List" class="button-list">&nbsp;</a>
+                                        <a href="{{ route('product.list',['data' => $data,'type' => 'list','locale' => app()->getLocale()]) }}" title="List" class="button-list">&nbsp;</a>
                                     </div>
                                 </div>
                                 <div class="pages">
@@ -87,9 +87,9 @@
                                         <ul>
                                             <li><a href="#">Position<span class="right-arrow"></span></a>
                                                 <ul>
-                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'name']) }}>Name</a></li>
-                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'price']) }}>Price</a></li>
-                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'position']) }}>Position</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'name','locale' => app()->getLocale()]) }}>Name</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'price','locale' => app()->getLocale()]) }}>Price</a></li>
+                                                    <li><a href={{ route('product.list',['data' => $data,'type' => 'grid','sortBy' => 'position','locale' => app()->getLocale()]) }}>Position</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

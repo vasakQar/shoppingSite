@@ -7,9 +7,9 @@
                 <div class="col-xs-12 col-sm-4 col-md-6 col-lg-6 pull-left">
                     <div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="{{asset('images/english.png')}}" alt="language"> English <span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"> <a href="#"><img src="{{asset('images/english.png')}}" alt="language"> English </a> </li>
-                            <li role="presentation"> <a href="#"><img src="{{asset('images/armenia.png')}}" alt="language" style="width: 16px;"> Armenian </a> </li>
-                            <li role="presentation"> <a href="#"><img src="{{asset('images/russia.png')}}" alt="language" style="width: 16px;"> Russian </a> </li>
+                            <li role="presentation"> <a href="/lang/en"><img src="{{asset('images/english.png')}}" alt="language"> English </a> </li>
+                            <li role="presentation"> <a href="/lang/am"><img src="{{asset('images/armenia.png')}}" alt="language" style="width: 16px;"> Armenian </a> </li>
+                            <li role="presentation"> <a href="/lang/ru"><img src="{{asset('images/russia.png')}}" alt="language" style="width: 16px;"> Russian </a> </li>
                         </ul>
                     </div>
                     <!-- End Header Language -->
@@ -78,7 +78,13 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 logo-block">
                 <!-- Header Logo -->
-                <div class="logo"> <a title="Qualis" href="{{ route('shop.index') }}"><img alt="Qualis" src="{{asset('images/logo.png')}}"> </a> </div>
+                <div class="logo">
+                    <a title="Qualis" href="{{ route('shop.index', app()->getLocale() ) }}">
+                        <img alt="Qualis" src="{{asset('images/logo.png')}}">
+                    </a>
+                    <h1>{{ trans('lang.Qualis')}}</h1>
+                    {{ trans('lang.Qualis')}}
+                </div>
                 <!-- End Header Logo -->
             </div>
             <div class="col-lg-7 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
@@ -184,8 +190,8 @@
             <div class="our-features-box hidden-xs">
                 <div class="features-block">
                     <div class="col-lg-9 col-md-9 col-xs-12 col-sm-9 offer-block">
-                        <a href="{{ route('product.list',['data' => 'NewArrivals','type' => 'list']) }}">New Arrivals</a>
-                        <a href="{{ route('product.list',['data' => 'Special','type' => 'list']) }}">Special</a>
+                        <a href="{{ route('product.list',['data' => 'NewArrivals','type' => 'list']) }}">{{__('New Arrivals')}}</a>
+                        <a href="{{ route('product.list',['data' => 'Special','type' => 'list']) }}">{{__('Special')}}</a>
                         <a href="{{ route('product.list',['data' => 'TodaysDeals','type' => 'list']) }}">Todays Deals</a>
                     </div>
                 </div>

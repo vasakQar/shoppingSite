@@ -76,7 +76,7 @@
                 <div class="wpb_wrapper">
                     <div class="banner">
                         <div class="banner-content">
-                            <h4>Modern Collection</h4>
+                            <h4>{{__('Modern Collection')}}</h4>
                             <h5>Sale upto 50% off </h5>
                             <a href="" class="readmore-link">Read more <i class="fa fa-chevron-circle-right"></i></a>
                         </div>

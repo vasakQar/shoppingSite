@@ -5,6 +5,7 @@ use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Mail\SubscribeMail;
+use Illuminate\Support\Facades\Config;
 
 
 
@@ -23,12 +24,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('lang/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('/shop')->group(function () {
+Route::group(['middleware' => 'locale'], function() {
     Route::get('/index', [ShopController::class, 'index'])->name('shop.index');
     Route::get('/product_detail/{id?}', [ShopController::class, 'showProductDetail'])->name('shop.product.detail');
     Route::get('/wish_list', [ShopController::class, 'showWishList'])->name('products.wish.list');
@@ -36,9 +38,6 @@ Route::prefix('/shop')->group(function () {
     Route::get('/quick_view', [ShopController::class, 'quickView'])->name('quick.view');
     Route::get('/product_list/{data?}',[ShopController::class, 'showProductList'])->name('product.list');
     Route::post('/subscribe',[ShopController::class,'userSubscribe'])->name('user.subscribe');
-//    Route::get('/subscribe', function() {
-//        return new SubscribeMail();
-//    });
     Route::get('/send_email',[App\Http\Controllers\Mail\MailController::class,'sendEmail'])->name('send.email');
 });
 
