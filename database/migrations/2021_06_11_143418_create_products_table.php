@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->text('description_ru')->nullable();
             $table->float('price')->default(0);
             $table->float('old_price')->nullable()->default(0);
-            $table->json('images')->nullable();
+            $table->text('images')->nullable();
             $table->timestamps();
         });
     }

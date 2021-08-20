@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSubscribeRequest;
 use App\Models\Admin\ContactInfo\HeaderInfo;
-use App\Models\Admin\ContactInfo\ContacUs;
+use App\Models\Admin\ContactInfo\ContactUs;
 use App\Models\Admin\ContactInfo\SocialSite;
 use App\Models\Admin\Subscribe;
 use App\Models\Category;
@@ -23,7 +23,7 @@ class ShopController extends Controller
 {
     public function __construct()
     {
-        $contact     = ContacUs::all();
+        $contact     = ContactUs::all();
         $socialSites = SocialSite::all();
         $headerInfo  = HeaderInfo::all();
         View::share('contact', $contact);
@@ -100,7 +100,7 @@ class ShopController extends Controller
         $data   = $request->data;
         $list   = $request->type;
         if ($data == 'NewArrivals'){
-            $date = Carbon::now()->subDays(7);
+            $date = Carbon::now()->subDays(40);
             if ($sortBy == 'name'){
                 $products = Product::with('Category')->where('created_at', '>=', $date)->orWhere('updated_at', '>=', $date)->orderBy('name','ASC')->paginate(15);
             }elseif ($sortBy == 'price'){

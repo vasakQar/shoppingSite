@@ -30,6 +30,7 @@ class ProductFactory extends Factory
             'description_am' => $this->faker->text,
             'price' => $this->faker->randomDigit,
             'old_price' => $this->faker->randomDigit,
+//            'images' => [$this->faker->image(public_path('images'),400,300, null, false)],
             'images' => [$this->faker->image('public/storage/images',640,480, null, false)],
         ];
     }

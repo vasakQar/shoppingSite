@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\ContactInfo\ContacUs;
+use App\Models\Admin\ContactInfo\ContactUs;
 use App\Models\Admin\ContactInfo\HeaderInfo;
 use App\Models\Admin\ContactInfo\SocialSite;
 use App\Providers\RouteServiceProvider;
@@ -42,7 +42,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $contact     = ContacUs::all();
+        $contact     = ContactUs::all();
         $socialSites = SocialSite::all();
         $headerInfo  = HeaderInfo::all();
         View::share('contact', $contact);
